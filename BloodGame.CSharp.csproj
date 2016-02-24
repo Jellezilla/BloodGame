@@ -63,11 +63,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Node.cs" />
     <Compile Include="Assets\Scrips\Camera\FollowCam.cs" />
     <Compile Include="Assets\Scrips\Entities\Common\FlowObject.cs" />
-    <Compile Include="Assets\Scrips\Entities\Player\Movement.cs" />
+    <Compile Include="Assets\Scrips\Entities\Player\Movement\Movement.cs" />
+    <Compile Include="Assets\Scrips\Entities\Player\Parts\Launcher.cs" />
+    <Compile Include="Assets\Scrips\Entities\Player\Parts\Parts.cs" />
+    <Compile Include="Assets\Scrips\Entities\Player\Parts\PartsContainer.cs" />
+    <Compile Include="Assets\Scrips\Entities\Player\PlayerController\Player.cs" />
     <Compile Include="Assets\Scrips\Enum\EnumContainer.cs" />
+    <Compile Include="Assets\Scrips\Node.cs" />
+    <Compile Include="Assets\Scrips\Objects\GrappleHook\GrappleHook.cs" />
     <Compile Include="Assets\Scrips\World\FlowArea.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
