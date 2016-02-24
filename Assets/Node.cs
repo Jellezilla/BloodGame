@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// MIGHT USE THIS FOR SKILL TREE IMPLEMENTATION
 public class Node
 {
     private MonoBehaviour _value;
