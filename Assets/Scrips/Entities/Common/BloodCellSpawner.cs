@@ -47,11 +47,6 @@ public class BloodCellSpawner : MonoBehaviour {
         
         GameObject clone = Instantiate(bloodCellPrefab, spawnPos, Quaternion.identity) as GameObject;
 
-        string output = "Spawned: " + bloodCellPrefab.name;
-        output += ". At pos: " + spawnPos.ToString();
-        output += ". At spawnPoint: " + spawnPoints[spawnPointIndex].name;
-        Debug.Log(output);
-
         clone.transform.parent = transform;
     }
 
