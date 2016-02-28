@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11407910}
   - 54: {fileID: 5409844}
   m_Layer: 0
-  m_Name: Bloodcell
+  m_Name: BloodCell
   m_TagString: RedCell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -8,6 +8,7 @@ TagManager:
   - RedCell
   - WhiteCell
   - VirusCell
+  - FlowArea
   layers:
   - Default
   - TransparentFX
