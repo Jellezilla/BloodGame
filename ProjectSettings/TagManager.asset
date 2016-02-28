@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Section
+  - RedCell
+  - WhiteCell
+  - VirusCell
   layers:
   - Default
   - TransparentFX

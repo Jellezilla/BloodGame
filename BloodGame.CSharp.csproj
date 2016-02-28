@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scrips\Camera\FollowCam.cs" />
+    <Compile Include="Assets\Scrips\Entities\Common\BloodCellSpawner.cs" />
     <Compile Include="Assets\Scrips\Entities\Common\FlowObject.cs" />
     <Compile Include="Assets\Scrips\Entities\Player\Movement\Movement.cs" />
     <Compile Include="Assets\Scrips\Entities\Player\Parts\Launcher.cs" />
