@@ -7,6 +7,8 @@ public class Launcher : Parts {
 
     private Transform _launchPoint;
     public GameObject hookPrefab;
+    private GrappleHook _hook;
+    public bool _launchedHook;
 	// Use this for initialization
 	void Awake () {
 
@@ -24,11 +26,37 @@ public class Launcher : Parts {
     /// <summary>Used to launch the hook from the launcher.</summary>
     public override void PartAction()
     {
-        Debug.Log("LAUNCHER OK");
-        GameObject hook = (GameObject)Instantiate(hookPrefab, _launchPoint.position, _launchPoint.rotation);
-        Debug.Log(hook);
-        hook.GetComponent<GrappleHook>().Launch();
+        if (!_launchedHook)
+        {
+            Debug.Log("LAUNCHER OK");
+            GameObject gh = (GameObject)Instantiate(hookPrefab, _launchPoint.position, _launchPoint.rotation);
+            _hook = gh.GetComponent<GrappleHook>();
+            _launchedHook = true;
+            _hook.Launcher = this;
+            _hook.Launch();
+        }
+        else
+        {
+            Debug.Log("LAUNCHER N_OK");
+        }
+
     }
 
+
+    public bool isHookLaunched
+    {
+        set
+        {
+            _launchedHook = value;
+        }
+    }
+
+    public GrappleHook CurrentHook
+    {
+        get
+        {
+            return _hook;
+        }
+    }
 
 }

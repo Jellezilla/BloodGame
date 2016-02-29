@@ -15,6 +15,7 @@ public class PartsContainer : MonoBehaviour {
     {
         _currentParts = new Dictionary<PartType, Parts>();
         _currentParts.Add(PartType.Launcher, testPart); // adding test part xD
+        _currentParts.Add(PartType.Chasis, gameObject.GetComponent<Chasis>()); // chasis part test 2
 	
 	}
 
@@ -25,6 +26,12 @@ public class PartsContainer : MonoBehaviour {
     {
         switch (partType)
         {
+            case PartType.Chasis:
+                {
+                    _currentParts.Add(partType, part);
+                    break;
+                }
+
             case PartType.Launcher:
                 {
                     _currentParts.Add(partType, part);

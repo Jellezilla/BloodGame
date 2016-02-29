@@ -8,7 +8,7 @@ public class FollowCam : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 
-        _player = GameObject.FindGameObjectWithTag(Tags.Player.ToString()).transform;
+        _player = GameObject.FindGameObjectWithTag(Enitity.Player.ToString()).transform;
 	
 	}
 	

@@ -5,29 +5,83 @@ using System.Collections;
 public class GrappleHook : MonoBehaviour
 {
     public float speed;
-    public int maxDistance;
+    public float maxDistance;
     private Rigidbody _rb;
     private Vector3 _spawnPosition;
     private Rigidbody _playerRB;
+    private Launcher _launcher;
+    private bool _isCell;
+    private bool _hasTarget;
     private SpringJoint _spring;
+    private GameObject _cTarget;
+    private CellBody _cb;
     // Use this for initialization
     void Awake()
     {
         _rb = GetComponent<Rigidbody>();
         _spawnPosition = transform.position;
-        _playerRB = GameObject.FindWithTag(Tags.Player.ToString()).GetComponent<Rigidbody>();
+        _playerRB = GameObject.FindWithTag(Enitity.Player.ToString()).GetComponent<Rigidbody>();
         //grab original Position
     }
 
-    public void OnCollisionEnter(Collision collision)
+
+    public Launcher Launcher
     {
-        if (collision.gameObject.tag != Tags.Player.ToString() && collision.gameObject.tag != Tags.RedCell.ToString()
-            && collision.gameObject.tag != Tags.WhiteCell.ToString() && collision.gameObject.tag != Tags.VirusCell.ToString())
+        set
         {
-            Debug.Log("Hook HIT"); // if you hit a wall or something that you can attach to set to kinematic
-            _rb.isKinematic = true;
-            _spring = gameObject.AddComponent<SpringJoint>();
-            _spring.connectedBody = _playerRB;
+            _launcher = value;
+        }
+    }
+
+    public GameObject HookTarget
+    {
+        get
+        {
+            return _cTarget;
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag != Enitity.Player.ToString())
+        {
+            _hasTarget = true;
+            Debug.Log("Hook HIT"); // if you hit a wall or something that you can attach to
+            if (collision.gameObject.tag == Enviroment.Wall.ToString())
+            {
+                _cTarget = collision.gameObject;
+                _rb.isKinematic = true;
+                _spring = gameObject.AddComponent<SpringJoint>();
+                _spring.axis = transform.forward;
+                _spring.minDistance = 0.05f;
+                _spring.maxDistance = 0.10f;
+                _spring.connectedBody = _playerRB;
+               
+                
+            }
+            else if(collision.gameObject.tag == Enitity.RedCell.ToString() || collision.gameObject.tag == Enitity.WhiteCell.ToString() || collision.gameObject.tag == Enitity.VirusCell.ToString())
+            {
+                _isCell = true;
+                _cTarget = collision.gameObject;
+                _cb = _cTarget.GetComponent<CellBody>();
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, transform.forward, out hit))
+                {
+                    Debug.Log("Point of contact: " + hit.point);
+                    gameObject.transform.position = hit.point;
+                    Destroy(_rb);
+                    gameObject.transform.SetParent(collision.gameObject.transform);
+                    _spring = _cTarget.gameObject.AddComponent<SpringJoint>();
+                    _spring.axis = transform.forward;
+                    _spring.minDistance = 0.05f;
+                    _spring.maxDistance = 0.10f;
+                    _spring.connectedBody = _playerRB;
+
+                }
+               
+            }
+            
+
         }
 
     }
@@ -35,7 +89,6 @@ public class GrappleHook : MonoBehaviour
     /// <param name="player">The player rigidbody component must be passed.</param>
     public void Launch()
     {
-        
         _rb.AddForce(transform.forward * speed, ForceMode.Impulse);
     }
 
@@ -43,20 +96,32 @@ public class GrappleHook : MonoBehaviour
     //check if the hook has reached max distance
     void DistanceCheck()
     {
-        if (Vector3.Distance(_spawnPosition, transform.position) > maxDistance)
+        if (Vector3.Distance(_spawnPosition, transform.position) > maxDistance && !_isCell)
         {
-           
+            _launcher.isHookLaunched = false;
             Destroy(gameObject);
         }
     }
 
     void Update()
     {
+        DistanceCheck();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             //destroy test hook
+            Destroy(_spring);
+            _launcher.isHookLaunched = false;
             Destroy(gameObject);
         }
-        DistanceCheck();
+
+        if (_hasTarget && _cb!=null)
+        {
+            if (_cb.isDead())
+            {
+                _launcher.isHookLaunched = false;
+                Destroy(gameObject);
+            }
+        }
+
     }
 }
