@@ -9,6 +9,7 @@ public abstract class Parts :MonoBehaviour {
     protected int _partCost;
     protected string _partDescription;
     protected float _launchVelocity;
+    protected float _partDurability;
 
     /// <summary>Abstract method used to define what each part does. Refer to each part class.</summary>
     public abstract void PartAction();
