@@ -14,7 +14,7 @@ public class EnemyMovement : MonoBehaviour {
 	void Start ()
     {
         player = GameObject.FindWithTag("Player");
-        rigid = transform.GetComponent<Rigidbody>();
+        rigid = GetComponent<Rigidbody>();
 
 
 
@@ -46,7 +46,6 @@ public class EnemyMovement : MonoBehaviour {
     void Chase()
     {
         rigid.AddForce(Input.GetAxis("Vertical") * transform.forward * 4f, ForceMode.Acceleration);
-        //transform.Rotate(0, Input.GetAxis("Horizontal") * 2.5f, 0);
         transform.LookAt(player.transform);
     }
 

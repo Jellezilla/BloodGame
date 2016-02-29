@@ -11,6 +11,7 @@ public enum Enitity
 public enum Enviroment
 {
     Wall,
+    FlowArea,
     ResourceNode
 }
 /// <summary>Enumeration of all the player part types</summary>

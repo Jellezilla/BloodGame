@@ -9,6 +9,7 @@ public class Launcher : Parts {
     public GameObject hookPrefab;
     private GrappleHook _hook;
     public bool _launchedHook;
+    private GameObject gh;
 	// Use this for initialization
 	void Awake () {
 
@@ -29,11 +30,13 @@ public class Launcher : Parts {
         if (!_launchedHook)
         {
             Debug.Log("LAUNCHER OK");
-            GameObject gh = (GameObject)Instantiate(hookPrefab, _launchPoint.position, _launchPoint.rotation);
+             gh = (GameObject)Instantiate(hookPrefab, _launchPoint.position, _launchPoint.rotation);
             _hook = gh.GetComponent<GrappleHook>();
             _launchedHook = true;
             _hook.Launcher = this;
             _hook.Launch();
+            gh = null;
+
         }
         else
         {

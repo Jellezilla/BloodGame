@@ -57,7 +57,8 @@ public class Player : MonoBehaviour {
             {
                 if (_launcher.CurrentHook.HookTarget != null)
                 {
-                    _chasis.SyphonTarget(_launcher.CurrentHook.HookTarget.GetComponent<CellBody>());
+                    Debug.Log(_launcher.CurrentHook.HookTarget);
+                    _chasis.SyphonTarget(_launcher.CurrentHook.HookTarget);
                     Debug.Log("Syphon");
                 }
             }
