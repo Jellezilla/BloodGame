@@ -33,11 +33,11 @@ public class GrappleHook : MonoBehaviour
         }
     }
 
-    public GameObject HookTarget
+    public CellBody HookTarget
     {
         get
         {
-            return _cTarget;
+            return _cb;
         }
     }
 
@@ -118,6 +118,7 @@ public class GrappleHook : MonoBehaviour
         {
             if (_cb.isDead())
             {
+                Destroy(_spring);
                 _launcher.isHookLaunched = false;
                 Destroy(gameObject);
             }
