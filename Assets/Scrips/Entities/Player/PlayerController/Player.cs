@@ -7,43 +7,68 @@ public class Player : MonoBehaviour {
 
     private Rigidbody _rb;
     private PartsContainer _partsContainer;
+    private bool _isPlayerHooked;
+    private Launcher _launcher;
+    private Chasis _chasis;
 	// Use this for initialization
 	void Start () {
 
         _rb = GetComponent<Rigidbody>();
         _partsContainer = GetComponent<PartsContainer>();
+        GetParts();
 	
 	}
 
-    /// <summary>Used to add force to the player</summary>
-    void accel()
+    void GetParts()
     {
-        _rb.AddForce(Input.GetAxis("Vertical") * transform.forward * 4f, ForceMode.Acceleration);
+        //Load Part refs
+        _chasis = (Chasis)_partsContainer.GetPart(PartType.Chasis);
+        _launcher = (Launcher)_partsContainer.GetPart(PartType.Launcher);
     }
 
-    /// <summary>Used to turn the player</summary>
-
-    void turn()
+    /// <summary>Used to make the player move.</summary>
+    void Movement()
     {
-        transform.Rotate(0, Input.GetAxis("Horizontal") * 2.5f, 0);
+        _rb.AddForce(Input.GetAxis("Vertical") * transform.forward * 4f, ForceMode.Acceleration);
+        _rb.AddTorque(Input.GetAxis("Horizontal") * transform.up);
+        //transform.Rotate(0, Input.GetAxis("Horizontal") * 2.5f, 0);
     }
 
 
     // Update is called once per frame
     void Update () {
 
-        turn();
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            Parts launcher = _partsContainer.GetPart(PartType.Launcher);
             Debug.Log("HIT!");
-            launcher.PartAction();
+            _launcher.PartAction();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Debug.Log("Repair");
+            _chasis.PartAction();
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (_launcher.CurrentHook != null)
+            {
+                if (_launcher.CurrentHook.HookTarget != null)
+                {
+                    _chasis.SyphonTarget(_launcher.CurrentHook.HookTarget.GetComponent<CellBody>());
+                    Debug.Log("Syphon");
+                }
+            }
+            
+            
         }
 	
 	}
 
     void FixedUpdate()
     {
-        accel();
+        Movement();
     }
 }
