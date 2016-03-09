@@ -4,6 +4,12 @@ using System.Collections;
 public class FlowObject : MonoBehaviour
 {
     private FlowArea _currentFlowA;
+    private Rigidbody _bodyRB;
+
+    void Awake()
+    {
+        _bodyRB = GetComponent<Rigidbody>();
+    }
 
 
     void FixedUpdate()
@@ -20,7 +26,7 @@ public class FlowObject : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        if (_currentFlowA != null && other.GetComponent<FlowArea>().GetInstanceID() == _currentFlowA.GetInstanceID())
+        if (_currentFlowA != null && other.gameObject == _currentFlowA.gameObject)
         {
             _currentFlowA = null;
         }
@@ -33,7 +39,7 @@ public class FlowObject : MonoBehaviour
     {
         if (_currentFlowA != null)
         {
-            _currentFlowA.Attract(transform);
+            _currentFlowA.Attract(_bodyRB);
         }
     }
 

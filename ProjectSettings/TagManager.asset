@@ -9,6 +9,7 @@ TagManager:
   - WhiteCell
   - VirusCell
   - FlowArea
+  - Wall
   layers:
   - Default
   - TransparentFX
