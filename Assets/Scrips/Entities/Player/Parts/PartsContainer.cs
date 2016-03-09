@@ -9,13 +9,14 @@ public class PartsContainer : MonoBehaviour {
 
     private Dictionary<PartType, Parts> _currentParts;
 
-    public Launcher testPart; // test var before we link stuff
+    public UtilityHookLauncher testPart; // test var before we link stuff
+    public Chasis testpartTwo;
 	// Use this for initialization
 	void Awake ()
     {
         _currentParts = new Dictionary<PartType, Parts>();
-        _currentParts.Add(PartType.Launcher, testPart); // adding test part xD
-        _currentParts.Add(PartType.Chasis, gameObject.GetComponent<Chasis>()); // chasis part test 2
+        _currentParts.Add(PartType.UtilityHookLauncher, testPart); // adding test part xD
+        _currentParts.Add(PartType.Chasis, testpartTwo); // chasis part test 2
 	
 	}
 
@@ -32,7 +33,7 @@ public class PartsContainer : MonoBehaviour {
                     break;
                 }
 
-            case PartType.Launcher:
+            case PartType.UtilityHookLauncher:
                 {
                     _currentParts.Add(partType, part);
                     break;

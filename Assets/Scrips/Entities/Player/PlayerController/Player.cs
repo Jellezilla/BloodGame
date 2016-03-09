@@ -8,7 +8,7 @@ public class Player : MonoBehaviour {
     private Rigidbody _rb;
     private PartsContainer _partsContainer;
     private bool _isPlayerHooked;
-    private Launcher _launcher;
+    private UtilityHookLauncher _launcher;
     private Chasis _chasis;
 	// Use this for initialization
 	void Start () {
@@ -23,7 +23,7 @@ public class Player : MonoBehaviour {
     {
         //Load Part refs
         _chasis = (Chasis)_partsContainer.GetPart(PartType.Chasis);
-        _launcher = (Launcher)_partsContainer.GetPart(PartType.Launcher);
+        _launcher = (UtilityHookLauncher)_partsContainer.GetPart(PartType.UtilityHookLauncher);
     }
 
     /// <summary>Used to make the player move.</summary>

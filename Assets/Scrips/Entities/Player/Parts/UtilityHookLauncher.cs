@@ -3,7 +3,7 @@
 
 
 /// <summary>Launcher base class, handles launching the hook...further updates required.</summary>
-public class Launcher : Parts {
+public class UtilityHookLauncher : Parts {
 
     private Transform _launchPoint;
     public GameObject hookPrefab;

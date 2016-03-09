@@ -25,10 +25,10 @@ public class CellSpawner : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        _player = GameObject.FindGameObjectWithTag(Enitity.Player.ToString());
+        _player = GameObject.FindGameObjectWithTag(Tags.playerTag);
         _whiteCellPrefab = Resources.Load("WhiteBloodCell") as GameObject;
         _redCellPrefab = Resources.Load("BloodCell") as GameObject;
-        _spawnPoints = GameObject.FindGameObjectsWithTag(Enviroment.FlowArea.ToString());
+        _spawnPoints = GameObject.FindGameObjectsWithTag(Tags.flowAreaTag);
         _ts = gameObject.GetComponent<ThreatSystem>();
         StartCoroutine(SpawnWhiteCells());
         StartCoroutine(SpawnRedCells());
