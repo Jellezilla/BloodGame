@@ -10,6 +10,7 @@ TagManager:
   - VirusCell
   - FlowArea
   - Wall
+  - ChasisSlot
   layers:
   - Default
   - TransparentFX

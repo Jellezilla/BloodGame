@@ -9,7 +9,7 @@ public class GrappleHook : MonoBehaviour
     private Rigidbody _rb;
     private Vector3 _spawnPosition;
     private Rigidbody _playerRB;
-    private Launcher _launcher;
+    private UtilityHookLauncher _launcher;
     private bool _isCell;
     private bool _hasTarget;
     private SpringJoint _spring;
@@ -20,12 +20,12 @@ public class GrappleHook : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _spawnPosition = transform.position;
-        _playerRB = GameObject.FindWithTag(Enitity.Player.ToString()).GetComponent<Rigidbody>();
+        _playerRB = GameObject.FindWithTag(Tags.playerTag).GetComponent<Rigidbody>();
         //grab original Position
     }
 
 
-    public Launcher Launcher
+    public UtilityHookLauncher Launcher
     {
         set
         {
@@ -43,11 +43,12 @@ public class GrappleHook : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag != Enitity.Player.ToString())
+        Debug.Log(collision.gameObject.tag);
+        if (collision.gameObject.tag != Tags.playerTag)
         {
             _hasTarget = true;
             Debug.Log("Hook HIT"); // if you hit a wall or something that you can attach to
-            if (collision.gameObject.tag == Enviroment.Wall.ToString())
+            if (collision.gameObject.tag == Tags.wallTag)
             {
                 _cTarget = collision.gameObject;
                 _rb.isKinematic = true;
@@ -59,7 +60,7 @@ public class GrappleHook : MonoBehaviour
                
                 
             }
-            else if(collision.gameObject.tag == Enitity.RedCell.ToString() || collision.gameObject.tag == Enitity.WhiteCell.ToString() || collision.gameObject.tag == Enitity.VirusCell.ToString())
+            else if(collision.gameObject.tag == Tags.redCellTag || collision.gameObject.tag == Tags.whiteCellTag || collision.gameObject.tag == Tags.virusCellTag)
             {
                 _isCell = true;
                 _cTarget = collision.gameObject;
@@ -67,7 +68,6 @@ public class GrappleHook : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, transform.forward, out hit))
                 {
-                    Debug.Log("Point of contact: " + hit.point);
                     gameObject.transform.position = hit.point;
                     Destroy(_rb);
                     gameObject.transform.SetParent(collision.gameObject.transform);

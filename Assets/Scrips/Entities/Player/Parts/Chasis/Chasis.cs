@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System;
 
 /// <summary>
@@ -17,6 +18,11 @@ public class Chasis : Parts {
     private bool _selfRepairOn;
     private bool _syphoning;
     Coroutine syphon;
+    private List<PartSlot> _slots;
+    private Rigidbody _playerRB;
+    public GameObject launcherPrefab;
+    public GameObject mainThrusterPrefab;
+    public GameObject lateralThrusterPrefab;
 
     //current Chasis properties -- test stuff
     int repdurab = 50;
@@ -30,7 +36,64 @@ public class Chasis : Parts {
 
     void Awake()
     {
+        _playerRB = GetComponent<Rigidbody>();
+        _slots = new List<PartSlot>();
         _waitforS = new WaitForSeconds(1);
+        GetSlots();
+        setupBOT();
+    }
+
+
+    void GetSlots()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            _slots.Add(transform.GetChild(i).gameObject.GetComponent<PartSlot>());
+        }
+    }
+
+
+    //TEST FUNCTION
+    void setupBOT()
+    {
+        // 0 is front , 1 is back // 2 slot left // 3 slot right
+        _slots[0].addPart(launcherPrefab);
+        //_slots[1].addPart(launcherPrefab);
+        //_slots[2].addPart(launcherPrefab);
+        //_slots[3].addPart(launcherPrefab);
+        _slots[1].addPart(mainThrusterPrefab,_playerRB);
+        _slots[2].addPart(lateralThrusterPrefab, _playerRB);
+        _slots[3].addPart(lateralThrusterPrefab, _playerRB);
+        
+    }
+    //END OF TEST FUNCTION
+    public List<Parts> GetAttachedParts(Type partType)
+    {
+        List<Parts> foundParts = new List<Parts>(0);
+        for (int i = 0; i < _slots.Count; i++)
+        {
+            if (_slots[i].GetPart() != null)
+            {
+                Debug.Log("part");
+                if (_slots[i].GetPart().GetType() == partType)
+                {
+                    foundParts.Add(_slots[i].GetPart());
+                    Debug.Log(_slots[i].GetPart());
+                }
+            }
+
+        }
+
+        if (foundParts.Count > 0)
+        {
+            return foundParts;
+        }
+        else
+        {
+            foundParts = null;
+            return null;
+        }
+        
     }
 
     void Update()
