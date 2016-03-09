@@ -43,6 +43,7 @@ public class GrappleHook : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.tag != Tags.playerTag)
         {
             _hasTarget = true;

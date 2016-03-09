@@ -69,11 +69,12 @@
     <Compile Include="Assets\Scrips\Entities\Common\BloodCellSpawner.cs" />
     <Compile Include="Assets\Scrips\Entities\Common\CellBody.cs" />
     <Compile Include="Assets\Scrips\Entities\Common\FlowObject.cs" />
-    <Compile Include="Assets\Scrips\Entities\Player\Movement\Movement.cs" />
-    <Compile Include="Assets\Scrips\Entities\Player\Parts\Chasis.cs" />
+    <Compile Include="Assets\Scrips\Entities\Player\Parts\Chasis\Chasis.cs" />
+    <Compile Include="Assets\Scrips\Entities\Player\Parts\Chasis\PartSlot.cs" />
+    <Compile Include="Assets\Scrips\Entities\Player\Parts\HookLauncher\UtilityHookLauncher.cs" />
     <Compile Include="Assets\Scrips\Entities\Player\Parts\Parts.cs" />
-    <Compile Include="Assets\Scrips\Entities\Player\Parts\PartsContainer.cs" />
-    <Compile Include="Assets\Scrips\Entities\Player\Parts\UtilityHookLauncher.cs" />
+    <Compile Include="Assets\Scrips\Entities\Player\Parts\Thrusters\LateralThrusters.cs" />
+    <Compile Include="Assets\Scrips\Entities\Player\Parts\Thrusters\MainThrusters.cs" />
     <Compile Include="Assets\Scrips\Entities\Player\PlayerController\Player.cs" />
     <Compile Include="Assets\Scrips\Entities\WhiteCell\Antibodies.cs" />
     <Compile Include="Assets\Scrips\Node.cs" />

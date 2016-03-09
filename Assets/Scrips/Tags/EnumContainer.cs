@@ -4,7 +4,7 @@ public enum PartType
     Chasis,
     UtilityHookLauncher,
     MineLayer,
-    RocketLauncher,
+    RocketLauncher
 }
 
 
