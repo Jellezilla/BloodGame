@@ -4,8 +4,10 @@ using System.Collections;
 /// <summary>Grappling hook class, handles grapling hook logic</summary>
 public class GrappleHook : MonoBehaviour
 {
-    public float speed;
-    public float maxDistance;
+    [SerializeField]
+    private float _speed;
+    [SerializeField]
+    private float _maxDistance;
     private Rigidbody _rb;
     private Vector3 _spawnPosition;
     private Rigidbody _playerRB;
@@ -89,14 +91,14 @@ public class GrappleHook : MonoBehaviour
     /// <param name="player">The player rigidbody component must be passed.</param>
     public void Launch()
     {
-        _rb.AddForce(transform.forward * speed, ForceMode.Impulse);
+        _rb.AddForce(transform.forward * _speed, ForceMode.Impulse);
     }
 
 
     //check if the hook has reached max distance
     void DistanceCheck()
     {
-        if (Vector3.Distance(_spawnPosition, transform.position) > maxDistance && !_isCell)
+        if (Vector3.Distance(_spawnPosition, transform.position) > _maxDistance && !_isCell)
         {
             _launcher.isHookLaunched = false;
             Destroy(gameObject);

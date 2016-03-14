@@ -1412,10 +1412,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 5449210, guid: 9b8348938c4ea2b46a0bfc20b12c0752, type: 2}
-      propertyPath: m_AngularDrag
-      value: 1.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b8348938c4ea2b46a0bfc20b12c0752, type: 2}
   m_IsPrefabParent: 0
@@ -9711,7 +9707,7 @@ Transform:
   - {fileID: 849690474}
   - {fileID: 730866746}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1 &689081828
 GameObject:
   m_ObjectHideFlags: 0

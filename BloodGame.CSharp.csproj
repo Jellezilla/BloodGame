@@ -72,13 +72,17 @@
     <Compile Include="Assets\Scrips\Entities\Player\Parts\Chasis\Chasis.cs" />
     <Compile Include="Assets\Scrips\Entities\Player\Parts\Chasis\PartSlot.cs" />
     <Compile Include="Assets\Scrips\Entities\Player\Parts\HookLauncher\UtilityHookLauncher.cs" />
+    <Compile Include="Assets\Scrips\Entities\Player\Parts\MineLayer\Minelayer.cs" />
     <Compile Include="Assets\Scrips\Entities\Player\Parts\Parts.cs" />
+    <Compile Include="Assets\Scrips\Entities\Player\Parts\RocketLauncher\RocketLauncher.cs" />
     <Compile Include="Assets\Scrips\Entities\Player\Parts\Thrusters\LateralThrusters.cs" />
     <Compile Include="Assets\Scrips\Entities\Player\Parts\Thrusters\MainThrusters.cs" />
     <Compile Include="Assets\Scrips\Entities\Player\PlayerController\Player.cs" />
     <Compile Include="Assets\Scrips\Entities\WhiteCell\Antibodies.cs" />
     <Compile Include="Assets\Scrips\Node.cs" />
     <Compile Include="Assets\Scrips\Objects\GrappleHook\GrappleHook.cs" />
+    <Compile Include="Assets\Scrips\Objects\Mine\Mine.cs" />
+    <Compile Include="Assets\Scrips\Objects\Rocket\Rocket.cs" />
     <Compile Include="Assets\Scrips\Tags\EnumContainer.cs" />
     <Compile Include="Assets\Scrips\Tags\Tags.cs" />
     <Compile Include="Assets\Scrips\ThreatSystem.cs" />
