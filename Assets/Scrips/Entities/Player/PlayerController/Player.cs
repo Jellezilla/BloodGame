@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
     private List<MainThrusters> _mainThrusters;
     private List<LateralThrusters> _lateralThrusters;
     private List<Minelayer> _minelayers;
+    private List<RocketLauncher> _rocketLaunchers;
     private Chasis _chasis;
 	// Use this for initialization
 	void Start () {
@@ -18,6 +19,7 @@ public class Player : MonoBehaviour {
         _mainThrusters = new List<MainThrusters>(0);
         _lateralThrusters = new List<LateralThrusters>(0);
         _minelayers = new List<Minelayer>();
+        _rocketLaunchers = new List<RocketLauncher>();
         UpdateParts();
 	
 	}
@@ -63,6 +65,15 @@ public class Player : MonoBehaviour {
             }
         }
 
+        parts = _chasis.GetAttachedParts(typeof(RocketLauncher));
+        if (parts != null)
+        {
+            for (int i = 0; i < parts.Count; i++)
+            {
+                _rocketLaunchers.Add((RocketLauncher)parts[i]);
+            }
+        }
+
     }
 
     /// <summary>Used to make the player move.</summary>
@@ -100,6 +111,14 @@ public class Player : MonoBehaviour {
                 for (int i = 0; i < _minelayers.Count; i++)
                 {
                     _minelayers[i].PartAction();
+                }
+            }
+
+            if (_rocketLaunchers.Count > 0)
+            {
+                for (int i = 0; i < _rocketLaunchers.Count; i++)
+                {
+                    _rocketLaunchers[i].PartAction();
                 }
             }
 

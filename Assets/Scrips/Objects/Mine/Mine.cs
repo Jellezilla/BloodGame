@@ -81,47 +81,45 @@ public class Mine : MonoBehaviour
         Rigidbody targetRB = null;
         CellBody target = null;
         Chasis player = null;
-        if (!_detonating)
+        Collider[] targets = Physics.OverlapSphere(transform.position, _explosionRadius);
+
+        for (int i = 0; i < targets.Length; i++)
         {
-            _detonating = true;
-            Collider[] targets = Physics.OverlapSphere(transform.position, _explosionRadius);
 
-            for (int i = 0; i < targets.Length; i++)
+            if (targets[i].gameObject.tag == Tags.playerTag)
             {
+                player = targets[i].GetComponent<Chasis>();
+            }
+            else
+            {
+                target = targets[i].GetComponent<CellBody>();
+            }
 
-                if (targets[i].gameObject.tag == Tags.playerTag)
+
+            targetRB = targets[i].GetComponent<Rigidbody>();
+
+            if (targetRB != null && targetRB != _rb)
+            {
+                targetRB.AddExplosionForce(_explosionForce, transform.position, _explosionRadius, 0, ForceMode.Impulse);
+
+                if (target != null)
                 {
-                    player = targets[i].GetComponent<Chasis>();
+                    target.TakeDamage(_mineDamage);
                 }
-                else
+
+                if (player != null)
                 {
-                    target = targets[i].GetComponent<CellBody>();
-                }
-
-
-                targetRB = targets[i].GetComponent<Rigidbody>();
-
-                if (targetRB != null && targetRB != _rb)
-                {
-                    targetRB.AddExplosionForce(_explosionForce, transform.position, _explosionRadius,0,ForceMode.Impulse);
-
-                    if (target != null)
-                    {
-                        target.TakeDamage(_mineDamage);
-                    }
-                    else if (player != null)
-                    {
-                        player.TakeDamage(_mineDamage);
-                        Debug.Log(player.gameObject.name);
-                    }
+                    player.TakeDamage(_mineDamage);
+                    Debug.Log(player.gameObject.name);
                 }
             }
 
+
             Destroy(gameObject);
         }
-        
-        
-        
+
+
+
 
 
     }

@@ -24,7 +24,7 @@ public class Chasis : Parts {
     public GameObject mainThrusterPrefab;
     public GameObject lateralThrusterPrefab;
     public GameObject mineLauncherPrefab;
-
+    public GameObject rocketLauncherPrefab;
     //current Chasis properties -- test stuff
     int repdurab = 50;
     int durabPerS = 10;
@@ -62,7 +62,7 @@ public class Chasis : Parts {
     {
         // 0 is front , 1 is back // 2 slot left // 3 slot right
         //_slots[0].addPart(launcherPrefab);
-        _slots[0].addPart(mineLauncherPrefab);
+        _slots[0].addPart(rocketLauncherPrefab);
         //_slots[1].addPart(launcherPrefab);
         //_slots[2].addPart(launcherPrefab);
         //_slots[3].addPart(launcherPrefab);
