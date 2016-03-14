@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
     private List<UtilityHookLauncher> _launcher;
     private List<MainThrusters> _mainThrusters;
     private List<LateralThrusters> _lateralThrusters;
+    private List<Minelayer> _minelayers;
     private Chasis _chasis;
 	// Use this for initialization
 	void Start () {
@@ -16,6 +17,7 @@ public class Player : MonoBehaviour {
         _launcher = new List<UtilityHookLauncher>(0);
         _mainThrusters = new List<MainThrusters>(0);
         _lateralThrusters = new List<LateralThrusters>(0);
+        _minelayers = new List<Minelayer>();
         UpdateParts();
 	
 	}
@@ -52,7 +54,15 @@ public class Player : MonoBehaviour {
             }
         }
 
-        //Debug.Log(_launcher.gameObject);
+        parts = _chasis.GetAttachedParts(typeof(Minelayer));
+        if (parts != null)
+        {
+            for (int i = 0; i < parts.Count; i++)
+            {
+                _minelayers.Add((Minelayer)parts[i]);
+            }
+        }
+
     }
 
     /// <summary>Used to make the player move.</summary>
@@ -67,10 +77,7 @@ public class Player : MonoBehaviour {
         {
             _lateralThrusters[i].PartAction();
         }
-        
-       // _rb.AddForce(Input.GetAxis("Vertical") * transform.forward * 4f, ForceMode.Acceleration);
-        //_rb.AddTorque(Input.GetAxis("Horizontal") * transform.up);
-        //transform.Rotate(0, Input.GetAxis("Horizontal") * 2.5f, 0);
+
     }
 
 
@@ -80,10 +87,22 @@ public class Player : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("HIT!");
-            for (int i = 0; i < _launcher.Count; i++)
+            if (_launcher.Count > 0)
             {
-                _launcher[i].PartAction();
+                for (int i = 0; i < _launcher.Count; i++)
+                {
+                    _launcher[i].PartAction();
+                }
             }
+
+            if (_minelayers.Count > 0)
+            {
+                for (int i = 0; i < _minelayers.Count; i++)
+                {
+                    _minelayers[i].PartAction();
+                }
+            }
+
 
         }
 
