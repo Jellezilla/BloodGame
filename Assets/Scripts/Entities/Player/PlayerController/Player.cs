@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
     private List<LateralThrusters> _lateralThrusters;
     private List<Minelayer> _minelayers;
     private List<RocketLauncher> _rocketLaunchers;
+    private List<LaserRifle> _laserRifles;
     private Chasis _chasis;
 	// Use this for initialization
 	void Start () {
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour {
         _lateralThrusters = new List<LateralThrusters>(0);
         _minelayers = new List<Minelayer>();
         _rocketLaunchers = new List<RocketLauncher>();
+        _laserRifles = new List<LaserRifle>();
         UpdateParts();
 	
 	}
@@ -74,6 +76,15 @@ public class Player : MonoBehaviour {
             }
         }
 
+        parts = _chasis.GetAttachedParts(typeof(LaserRifle));
+        if (parts != null)
+        {
+            for (int i = 0; i < parts.Count; i++)
+            {
+                _laserRifles.Add((LaserRifle)parts[i]);
+            }
+        }
+
     }
 
     /// <summary>Used to make the player move.</summary>
@@ -119,6 +130,14 @@ public class Player : MonoBehaviour {
                 for (int i = 0; i < _rocketLaunchers.Count; i++)
                 {
                     _rocketLaunchers[i].PartAction();
+                }
+            }
+
+            if (_laserRifles.Count > 0)
+            {
+                for (int i = 0; i < _laserRifles.Count; i++)
+                {
+                    _laserRifles[i].PartAction();
                 }
             }
 

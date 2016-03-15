@@ -21,15 +21,11 @@ public class FlowObject : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        _currentFlowA = other.GetComponent<FlowArea>();
-    }
-
-    public void OnTriggerExit(Collider other)
-    {
-        if (_currentFlowA != null && other.gameObject == _currentFlowA.gameObject)
+        if (other.gameObject.tag == Tags.flowAreaTag)
         {
-            _currentFlowA = null;
+            _currentFlowA = other.GetComponent<FlowArea>();
         }
+
     }
     #endregion
 

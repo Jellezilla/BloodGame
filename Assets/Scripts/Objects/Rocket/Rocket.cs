@@ -48,9 +48,10 @@ public class Rocket : MonoBehaviour
 
                 targetRB = targets[i].GetComponent<Rigidbody>();
 
-                if (targetRB != null && targetRB != _rb)
+                if (targetRB != null)
                 {
-                    targetRB.AddExplosionForce(_explosionForce, transform.position, _explosionRadius, 0, ForceMode.Force);
+                    targetRB.AddExplosionForce(_explosionForce, transform.position, _explosionRadius, 0, ForceMode.Impulse);
+                    Debug.Log("EXPLODE");
 
                     if (target != null)
                     {

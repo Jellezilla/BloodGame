@@ -1412,6 +1412,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 5449210, guid: 9b8348938c4ea2b46a0bfc20b12c0752, type: 2}
+      propertyPath: m_AngularDrag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11492920, guid: 9b8348938c4ea2b46a0bfc20b12c0752, type: 2}
+      propertyPath: laserRiflePrefab
+      value: 
+      objectReference: {fileID: 148224, guid: 8778d3ba597e0d241898efba9ba91f6d, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b8348938c4ea2b46a0bfc20b12c0752, type: 2}
   m_IsPrefabParent: 0
@@ -22698,7 +22706,7 @@ Light:
   serializedVersion: 6
   m_Type: 1
   m_Color: {r: 0.625, g: 0.625, b: 0.625, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.7
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
