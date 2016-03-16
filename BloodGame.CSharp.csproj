@@ -58,18 +58,11 @@
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CellSpawner.cs" />
     <Compile Include="Assets\Scripts\Camera\FollowCam.cs" />
     <Compile Include="Assets\Scripts\EnemyMovement.cs" />
     <Compile Include="Assets\Scripts\Entities\Common\BloodCellSpawner.cs" />
@@ -86,14 +79,17 @@
     <Compile Include="Assets\Scripts\Entities\Player\Parts\Thrusters\MainThrusters.cs" />
     <Compile Include="Assets\Scripts\Entities\Player\PlayerController\Player.cs" />
     <Compile Include="Assets\Scripts\Entities\WhiteCell\Antibodies.cs" />
+    <Compile Include="Assets\Scripts\GameController\CellSpawner.cs" />
+    <Compile Include="Assets\Scripts\GameController\GameController.cs" />
+    <Compile Include="Assets\Scripts\GameController\ThreatSystem.cs" />
     <Compile Include="Assets\Scripts\Node.cs" />
     <Compile Include="Assets\Scripts\Objects\GrappleHook\GrappleHook.cs" />
     <Compile Include="Assets\Scripts\Objects\LaserBolt\LaserBolt.cs" />
     <Compile Include="Assets\Scripts\Objects\Mine\Mine.cs" />
     <Compile Include="Assets\Scripts\Objects\Rocket\Rocket.cs" />
+    <Compile Include="Assets\Scripts\Singleton\Singleton.cs" />
     <Compile Include="Assets\Scripts\Tags\EnumContainer.cs" />
     <Compile Include="Assets\Scripts\Tags\Tags.cs" />
-    <Compile Include="Assets\Scripts\ThreatSystem.cs" />
     <Compile Include="Assets\Scripts\World\FlowArea.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />

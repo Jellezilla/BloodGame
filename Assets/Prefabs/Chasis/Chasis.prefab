@@ -12,12 +12,10 @@ GameObject:
   - 136: {fileID: 13661974}
   - 23: {fileID: 2380000}
   - 114: {fileID: 11492920}
-  - 54: {fileID: 5449210}
   - 114: {fileID: 11478460}
-  - 114: {fileID: 11445998}
   m_Layer: 0
   m_Name: Chasis
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -117,8 +115,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105946}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.91, y: 7.3, z: 3.882}
-  m_LocalScale: {x: 1, y: 0.25, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 499442}
   - {fileID: 449956}
@@ -183,32 +181,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105946}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &5449210
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 105946}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0.5
-  m_AngularDrag: 0.5
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 84
-  m_CollisionDetection: 0
---- !u!114 &11445998
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 105946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0616df71499d4c4a85aab8e71a2315b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11446794
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -273,6 +245,7 @@ MonoBehaviour:
     type: 2}
   mineLauncherPrefab: {fileID: 109476, guid: 7e066e04d35ab464183f58ab74ad88a2, type: 2}
   rocketLauncherPrefab: {fileID: 107334, guid: 4552a7780a550254ab85bb5e90b40d40, type: 2}
+  laserRiflePrefab: {fileID: 148224, guid: 8778d3ba597e0d241898efba9ba91f6d, type: 2}
 --- !u!114 &11496600
 MonoBehaviour:
   m_ObjectHideFlags: 1

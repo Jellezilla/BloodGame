@@ -27,18 +27,18 @@ public class Chasis : Parts {
     public GameObject rocketLauncherPrefab;
     public GameObject laserRiflePrefab;
     //current Chasis properties -- test stuff
+    //repair values
     int repdurab = 50;
     int durabPerS = 10;
     int rCost = 5;
-
-
+    //syphon values
     int syphVal = 60;
     int syphPerS = 15;
 
 
     void Awake()
     {
-        _playerRB = GetComponent<Rigidbody>();
+        _playerRB = transform.parent.GetComponent<Rigidbody>();
         _slots = new List<PartSlot>();
         _waitforS = new WaitForSeconds(1);
         GetSlots();
@@ -192,4 +192,32 @@ public class Chasis : Parts {
             StartCoroutine(Repair(repdurab, durabPerS));
         }
     }
+
+
+    #region Getters
+    public int MaxDurability
+    {
+        get
+        {
+            return _maxDurability;
+        }
+    }
+
+    public int CurrentDurability
+    {
+        get
+        {
+            return _durability;
+        }
+    }
+
+    public double CurrentResources
+    {
+        get
+        {
+            return _synthesis;
+        }
+    }
+    #endregion
+
 }

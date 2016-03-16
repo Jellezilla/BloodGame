@@ -7,12 +7,15 @@ public class LaserBolt : MonoBehaviour
     [SerializeField]
     private float _speed;
     [SerializeField]
+    private float _maxDistance;
+    [SerializeField]
     private double _damage;
-
+    private Vector3 _spawnPosition;
     // Use this for initialization
     void Awake()
     {
 
+        _spawnPosition = transform.position;
         _rb = GetComponent<Rigidbody>();
         Launch();
 
@@ -42,9 +45,18 @@ public class LaserBolt : MonoBehaviour
         }
     }
 
+    void DistanceCheck()
+    {
+        if (Vector3.Distance(_spawnPosition, transform.position) > _maxDistance)
+        {
+
+            Destroy(gameObject);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-
+        DistanceCheck();
     }
 }

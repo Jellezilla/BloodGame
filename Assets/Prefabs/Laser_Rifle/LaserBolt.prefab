@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 3
+  _maxDistance: 6
   _damage: 5
 --- !u!136 &13609458
 CapsuleCollider:
@@ -120,6 +121,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: _damage
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _maxDistance
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

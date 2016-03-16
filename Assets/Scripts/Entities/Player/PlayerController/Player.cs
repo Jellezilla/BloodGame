@@ -11,11 +11,11 @@ public class Player : MonoBehaviour {
     private List<Minelayer> _minelayers;
     private List<RocketLauncher> _rocketLaunchers;
     private List<LaserRifle> _laserRifles;
+    [SerializeField]
     private Chasis _chasis;
 	// Use this for initialization
 	void Start () {
 
-        _chasis = GetComponent<Chasis>();
         _launcher = new List<UtilityHookLauncher>(0);
         _mainThrusters = new List<MainThrusters>(0);
         _lateralThrusters = new List<LateralThrusters>(0);
@@ -23,14 +23,15 @@ public class Player : MonoBehaviour {
         _rocketLaunchers = new List<RocketLauncher>();
         _laserRifles = new List<LaserRifle>();
         UpdateParts();
-	
-	}
 
+
+
+    }
     void UpdateParts()
     {
         //Load Part 
 
-        Debug.Log(_chasis.gameObject);
+        Debug.Log(_chasis);
         List<Parts> parts = _chasis.GetAttachedParts(typeof(UtilityHookLauncher));
         if (parts!=null)
         {
@@ -176,4 +177,20 @@ public class Player : MonoBehaviour {
     {
         Movement();
     }
+
+
+    //placeholder 
+    void RegisterChasis()
+    {
+        _chasis = transform.GetChild(0).GetComponent<Chasis>();
+    }
+    #region Setter/Getter
+    public Chasis Chasis
+    {
+        get
+        {
+            return _chasis;
+        }
+    }
+    #endregion
 }
