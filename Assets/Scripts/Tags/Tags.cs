@@ -13,5 +13,6 @@ public static class Tags {
     public const string virusCellTag = "VirusCell";
     public const string wallTag = "Wall";
     public const string resourceNode = "ResourceNode";
+    public const string gameManager = "GameManager";
 }
 

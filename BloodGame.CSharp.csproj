@@ -79,9 +79,9 @@
     <Compile Include="Assets\Scripts\Entities\Player\Parts\Thrusters\MainThrusters.cs" />
     <Compile Include="Assets\Scripts\Entities\Player\PlayerController\Player.cs" />
     <Compile Include="Assets\Scripts\Entities\WhiteCell\Antibodies.cs" />
-    <Compile Include="Assets\Scripts\GameController\CellSpawner.cs" />
     <Compile Include="Assets\Scripts\GameController\GameController.cs" />
-    <Compile Include="Assets\Scripts\GameController\ThreatSystem.cs" />
+    <Compile Include="Assets\Scripts\GameManager\CellSpawner.cs" />
+    <Compile Include="Assets\Scripts\GameManager\ThreatSystem.cs" />
     <Compile Include="Assets\Scripts\Node.cs" />
     <Compile Include="Assets\Scripts\Objects\GrappleHook\GrappleHook.cs" />
     <Compile Include="Assets\Scripts\Objects\LaserBolt\LaserBolt.cs" />

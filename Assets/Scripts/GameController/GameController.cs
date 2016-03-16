@@ -12,7 +12,7 @@ public class GameController : Singleton<GameController> {
 	void Awake ()
     {
        _player = GameObject.FindGameObjectWithTag(Tags.playerTag).GetComponent<Player>();
-       _threatSystem = GetComponent<ThreatSystem>();
+       _threatSystem = GameObject.FindGameObjectWithTag(Tags.gameManager).GetComponent<ThreatSystem>();
 	}
 	
 	// Update is called once per frame
