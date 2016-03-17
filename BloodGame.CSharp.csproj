@@ -63,26 +63,34 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CellSpawner.cs" />
-    <Compile Include="Assets\Scrips\Camera\FollowCam.cs" />
-    <Compile Include="Assets\Scrips\EnemyMovement.cs" />
-    <Compile Include="Assets\Scrips\Entities\Common\BloodCellSpawner.cs" />
-    <Compile Include="Assets\Scrips\Entities\Common\CellBody.cs" />
-    <Compile Include="Assets\Scrips\Entities\Common\FlowObject.cs" />
-    <Compile Include="Assets\Scrips\Entities\Player\Parts\Chasis\Chasis.cs" />
-    <Compile Include="Assets\Scrips\Entities\Player\Parts\Chasis\PartSlot.cs" />
-    <Compile Include="Assets\Scrips\Entities\Player\Parts\HookLauncher\UtilityHookLauncher.cs" />
-    <Compile Include="Assets\Scrips\Entities\Player\Parts\Parts.cs" />
-    <Compile Include="Assets\Scrips\Entities\Player\Parts\Thrusters\LateralThrusters.cs" />
-    <Compile Include="Assets\Scrips\Entities\Player\Parts\Thrusters\MainThrusters.cs" />
-    <Compile Include="Assets\Scrips\Entities\Player\PlayerController\Player.cs" />
-    <Compile Include="Assets\Scrips\Entities\WhiteCell\Antibodies.cs" />
-    <Compile Include="Assets\Scrips\Node.cs" />
-    <Compile Include="Assets\Scrips\Objects\GrappleHook\GrappleHook.cs" />
-    <Compile Include="Assets\Scrips\Tags\EnumContainer.cs" />
-    <Compile Include="Assets\Scrips\Tags\Tags.cs" />
-    <Compile Include="Assets\Scrips\ThreatSystem.cs" />
-    <Compile Include="Assets\Scrips\World\FlowArea.cs" />
+    <Compile Include="Assets\Scripts\Camera\FollowCam.cs" />
+    <Compile Include="Assets\Scripts\EnemyMovement.cs" />
+    <Compile Include="Assets\Scripts\Entities\Common\BloodCellSpawner.cs" />
+    <Compile Include="Assets\Scripts\Entities\Common\CellBody.cs" />
+    <Compile Include="Assets\Scripts\Entities\Common\FlowObject.cs" />
+    <Compile Include="Assets\Scripts\Entities\Player\Parts\Chasis\Chasis.cs" />
+    <Compile Include="Assets\Scripts\Entities\Player\Parts\Chasis\PartSlot.cs" />
+    <Compile Include="Assets\Scripts\Entities\Player\Parts\HookLauncher\UtilityHookLauncher.cs" />
+    <Compile Include="Assets\Scripts\Entities\Player\Parts\LaserRifle\LaserRifle.cs" />
+    <Compile Include="Assets\Scripts\Entities\Player\Parts\MineLayer\Minelayer.cs" />
+    <Compile Include="Assets\Scripts\Entities\Player\Parts\Parts.cs" />
+    <Compile Include="Assets\Scripts\Entities\Player\Parts\RocketLauncher\RocketLauncher.cs" />
+    <Compile Include="Assets\Scripts\Entities\Player\Parts\Thrusters\LateralThrusters.cs" />
+    <Compile Include="Assets\Scripts\Entities\Player\Parts\Thrusters\MainThrusters.cs" />
+    <Compile Include="Assets\Scripts\Entities\Player\PlayerController\Player.cs" />
+    <Compile Include="Assets\Scripts\Entities\WhiteCell\Antibodies.cs" />
+    <Compile Include="Assets\Scripts\GameController\GameController.cs" />
+    <Compile Include="Assets\Scripts\GameManager\CellSpawner.cs" />
+    <Compile Include="Assets\Scripts\GameManager\ThreatSystem.cs" />
+    <Compile Include="Assets\Scripts\Node.cs" />
+    <Compile Include="Assets\Scripts\Objects\GrappleHook\GrappleHook.cs" />
+    <Compile Include="Assets\Scripts\Objects\LaserBolt\LaserBolt.cs" />
+    <Compile Include="Assets\Scripts\Objects\Mine\Mine.cs" />
+    <Compile Include="Assets\Scripts\Objects\Rocket\Rocket.cs" />
+    <Compile Include="Assets\Scripts\Singleton\Singleton.cs" />
+    <Compile Include="Assets\Scripts\Tags\EnumContainer.cs" />
+    <Compile Include="Assets\Scripts\Tags\Tags.cs" />
+    <Compile Include="Assets\Scripts\World\FlowArea.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
