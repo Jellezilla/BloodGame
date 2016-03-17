@@ -15,6 +15,8 @@ public class Minelayer : Parts {
     // Use this for initialization
     void Awake () {
 
+
+        MountType();
         _partName = "Minelayer";
         _partDescription = "basic mine layer";
         _partCost = 0;

@@ -30,8 +30,6 @@ public class Player : MonoBehaviour {
     void UpdateParts()
     {
         //Load Part 
-
-        Debug.Log(_chasis);
         List<Parts> parts = _chasis.GetAttachedParts(typeof(UtilityHookLauncher));
         if (parts!=null)
         {
@@ -103,13 +101,10 @@ public class Player : MonoBehaviour {
 
     }
 
-
-    // Update is called once per frame
-    void Update () {
-
-        if(Input.GetKeyDown(KeyCode.Space))
+    void FireWeapons()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("HIT!");
             if (_launcher.Count > 0)
             {
                 for (int i = 0; i < _launcher.Count; i++)
@@ -144,6 +139,14 @@ public class Player : MonoBehaviour {
 
 
         }
+
+    }
+
+    // Update is called once per frame
+    void Update () {
+
+        FireWeapons();
+
 
         if (Input.GetKeyDown(KeyCode.R))
         {

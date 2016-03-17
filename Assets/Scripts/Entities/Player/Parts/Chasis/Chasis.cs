@@ -11,7 +11,7 @@ public class Chasis : Parts {
     [SerializeField]
     private int _maxDurability;
     [SerializeField]
-    private int _durability;
+    private double _durability;
     [SerializeField]
     private double _synthesis;
     private WaitForSeconds _waitforS;
@@ -38,6 +38,7 @@ public class Chasis : Parts {
 
     void Awake()
     {
+        MountType();
         _playerRB = transform.parent.GetComponent<Rigidbody>();
         _slots = new List<PartSlot>();
         _waitforS = new WaitForSeconds(1);
@@ -56,8 +57,23 @@ public class Chasis : Parts {
 
     public void TakeDamage(double damage)
     {
+        if(_durability>0)
+        {
+            _durability -= damage;
+        }
+
         // Implement Taking Damage
     }
+
+
+    public void PartTakeDamage(double damage)
+    {
+        if (_durability > 0)
+        {
+            _durability -= damage;
+        }
+    }
+
     //TEST FUNCTION
     void setupBOT()
     {
@@ -73,6 +89,12 @@ public class Chasis : Parts {
         
     }
     //END OF TEST FUNCTION
+
+    /// <summary>
+    /// Returns a list of all parts of a given type
+    /// </summary>
+    /// <param name="partType">given class type, has to be a Parts subclass</param>
+    /// <returns></returns>
     public List<Parts> GetAttachedParts(Type partType)
     {
         List<Parts> foundParts = new List<Parts>(0);
@@ -203,7 +225,7 @@ public class Chasis : Parts {
         }
     }
 
-    public int CurrentDurability
+    public double CurrentDurability
     {
         get
         {

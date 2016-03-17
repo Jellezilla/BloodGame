@@ -39,7 +39,6 @@ public class LaserBolt : MonoBehaviour
             }
             else
             {
-                Debug.Log(other.gameObject.name);
                 Destroy(gameObject);
             }
         }

@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxDurability: 150
-  _durability: 150
+  _durability: 0
   _synthesis: 25
   launcherPrefab: {fileID: 146572, guid: 6f484ac8261dda540bf5ef66471cbbb0, type: 2}
   mainThrusterPrefab: {fileID: 122706, guid: b655adf8789bf0c4b95bf61b837f48c9, type: 2}

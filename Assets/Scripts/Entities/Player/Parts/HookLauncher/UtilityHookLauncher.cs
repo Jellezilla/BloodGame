@@ -13,6 +13,7 @@ public class UtilityHookLauncher : Parts {
 	// Use this for initialization
 	void Awake () {
 
+        MountType();
         _partName = "Launcher";
         _partCost = 0;
         _partDescription = "Basic Launcher";
