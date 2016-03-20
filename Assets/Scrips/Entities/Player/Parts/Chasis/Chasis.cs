@@ -61,6 +61,7 @@ public class Chasis : Parts {
         //_slots[1].addPart(launcherPrefab);
         //_slots[2].addPart(launcherPrefab);
         //_slots[3].addPart(launcherPrefab);
+        //_slots[0].addPart(launcherPrefab);
         _slots[1].addPart(mainThrusterPrefab,_playerRB);
         _slots[2].addPart(lateralThrusterPrefab, _playerRB);
         _slots[3].addPart(lateralThrusterPrefab, _playerRB);
@@ -74,11 +75,11 @@ public class Chasis : Parts {
         {
             if (_slots[i].GetPart() != null)
             {
-                Debug.Log("part");
+     //           Debug.Log("part");
                 if (_slots[i].GetPart().GetType() == partType)
                 {
                     foundParts.Add(_slots[i].GetPart());
-                    Debug.Log(_slots[i].GetPart());
+                //    Debug.Log(_slots[i].GetPart());
                 }
             }
 
@@ -98,7 +99,7 @@ public class Chasis : Parts {
 
     void Update()
     {
-        Debug.Log(_synthesis);
+//        Debug.Log(_synthesis);
     }
 
     public void SyphonTarget(CellBody target)

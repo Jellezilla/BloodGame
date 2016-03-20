@@ -7,28 +7,20 @@ public class EnemyMovement : MonoBehaviour {
     private Rigidbody rigid;
 
 
-    private float aggroRange = 5.0f;
-    private float attackRange = 0.5f;
+    private float aggroRange = 8.0f;
+    private float attackRange = 1.0f;
 
 	// Use this for initialization
 	void Start ()
     {
         player = GameObject.FindWithTag("Player");
         rigid = GetComponent<Rigidbody>();
-
-
-
-
+        
 	}
 	
-	
-    
-    
-
     void FixedUpdate()
     {
         FSM();
-
     }
 
 

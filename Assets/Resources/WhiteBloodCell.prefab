@@ -117,6 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellHealth: 150
   cellSynth: 75
+  threatValue: 50
 --- !u!135 &13541156
 SphereCollider:
   m_ObjectHideFlags: 1

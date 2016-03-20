@@ -5,17 +5,35 @@ public class CellBody : MonoBehaviour {
 
     public double cellHealth;
     public double cellSynth;
-	
+    private ThreatSystem ts;
+
+    [SerializeField]
+    private int threatValue;
+
+    private bool amIDeadYet = false;
+
+    void Start()
+    {
+        ts = GameObject.FindWithTag("GameController").GetComponent<ThreatSystem>();
+    }
+
 	// Update is called once per frame
 	void Update () {
 
-        if (isDead())
+        if (isDead() && !amIDeadYet)
         {
-            Destroy(gameObject, 2.0f);
+            CellDead();
         }
-	
 	}
-
+    /// <summary>
+    ///  This method is called only once, when the cell dies. 
+    /// </summary>
+    private void CellDead()
+    {
+        amIDeadYet = true;
+        ts.IncreaseThreat(threatValue);
+        Destroy(gameObject, 1.0f);
+    }
 
     public bool isDead()
     {

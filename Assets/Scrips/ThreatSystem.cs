@@ -22,8 +22,9 @@ public class ThreatSystem : MonoBehaviour
 
     void Awake()
     {
+        
         _threatDecay = new WaitForSeconds(_threatDecayValue);
-        _threat = StartCoroutine(ThreatDecay());
+      //  _threat = StartCoroutine(ThreatDecay());
     }
 
     public float GetThreatLevel()
@@ -41,40 +42,52 @@ public class ThreatSystem : MonoBehaviour
     }
     public void IncreaseThreat(int adj)
     {
+        
         _onCoolDown = false;
         if (_cThreat < _maxThreat)
         {
             if (_cThreat + adj < _maxThreat)
             {
                 _cThreat += adj;
+            } else
+            {
+                _cThreat = _maxThreat;
             }
         }
-
+        StartCoroutine(CooldownDelay());
     }
+    /*
     private bool CoolDown()
     {
+
+        Debug.Log("Cooldown method!");
         if (!_onCoolDown)
         {
-            _onCoolDown = true;
             _cd = _cooldown;
-        }
-        else
-        {
-            _cd -= Time.deltaTime;
+            _onCoolDown = true;
         }
 
+     
         if (_cd > 0.0f)
         {
+            _cd -= Time.deltaTime;
             return true;
         }
         else
         {
+            if (_cd < 0)
+            {
+                _cd = 0;
+            }
+            _onCoolDown = true;
             return false;
         }
-    }
+    }*/
     private IEnumerator ThreatDecay()
     {
-        while (CoolDown())
+        Debug.Log("threat decay");  
+        //while (CoolDown())
+        while (_cThreat > 0.0f  && !_onCoolDown)
         {
             yield return _threatDecayRate;
             if (_cThreat > 0)
@@ -82,6 +95,20 @@ public class ThreatSystem : MonoBehaviour
                 _cThreat -= _threatDecayValue;
             }
         }
+    }
+
+    IEnumerator CooldownDelay()
+    {
+        _onCoolDown = true;
+        yield return new WaitForSeconds(5.0f);
+        _onCoolDown = false;
+        StartCoroutine(ThreatDecay());
+    }
+        
+    void OnGUI()
+    {
+        string output = "Current Threat Level: " + GetThreatLevel().ToString();
+        GUI.Label(new Rect(10, 10, 200, 25), output);
     }
 
 }
