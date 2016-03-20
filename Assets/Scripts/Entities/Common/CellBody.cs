@@ -14,7 +14,7 @@ public class CellBody : MonoBehaviour {
 
     void Start()
     {
-        ts = GameObject.FindWithTag("GameController").GetComponent<ThreatSystem>();
+        ts = GameObject.FindWithTag("GameManager").GetComponent<ThreatSystem>();
     }
 
 	// Update is called once per frame

@@ -11,7 +11,7 @@ public class Chasis : Parts {
     [SerializeField]
     private int _maxDurability;
     [SerializeField]
-    private int _durability;
+    private double _durability;
     [SerializeField]
     private double _synthesis;
     private WaitForSeconds _waitforS;
@@ -23,20 +23,23 @@ public class Chasis : Parts {
     public GameObject launcherPrefab;
     public GameObject mainThrusterPrefab;
     public GameObject lateralThrusterPrefab;
-
+    public GameObject mineLauncherPrefab;
+    public GameObject rocketLauncherPrefab;
+    public GameObject laserRiflePrefab;
     //current Chasis properties -- test stuff
+    //repair values
     int repdurab = 50;
     int durabPerS = 10;
     int rCost = 5;
-
-
+    //syphon values
     int syphVal = 60;
     int syphPerS = 15;
 
 
     void Awake()
     {
-        _playerRB = GetComponent<Rigidbody>();
+        MountType();
+        _playerRB = transform.parent.GetComponent<Rigidbody>();
         _slots = new List<PartSlot>();
         _waitforS = new WaitForSeconds(1);
         GetSlots();
@@ -52,12 +55,31 @@ public class Chasis : Parts {
         }
     }
 
+    public void TakeDamage(double damage)
+    {
+        if(_durability>0)
+        {
+            _durability -= damage;
+        }
+
+        // Implement Taking Damage
+    }
+
+
+    public void PartTakeDamage(double damage)
+    {
+        if (_durability > 0)
+        {
+            _durability -= damage;
+        }
+    }
 
     //TEST FUNCTION
     void setupBOT()
     {
         // 0 is front , 1 is back // 2 slot left // 3 slot right
-        _slots[0].addPart(launcherPrefab);
+        //_slots[0].addPart(launcherPrefab);
+        _slots[0].addPart(laserRiflePrefab);
         //_slots[1].addPart(launcherPrefab);
         //_slots[2].addPart(launcherPrefab);
         //_slots[3].addPart(launcherPrefab);
@@ -68,6 +90,12 @@ public class Chasis : Parts {
         
     }
     //END OF TEST FUNCTION
+
+    /// <summary>
+    /// Returns a list of all parts of a given type
+    /// </summary>
+    /// <param name="partType">given class type, has to be a Parts subclass</param>
+    /// <returns></returns>
     public List<Parts> GetAttachedParts(Type partType)
     {
         List<Parts> foundParts = new List<Parts>(0);
@@ -75,7 +103,7 @@ public class Chasis : Parts {
         {
             if (_slots[i].GetPart() != null)
             {
-     //           Debug.Log("part");
+
                 if (_slots[i].GetPart().GetType() == partType)
                 {
                     foundParts.Add(_slots[i].GetPart());
@@ -188,4 +216,32 @@ public class Chasis : Parts {
             StartCoroutine(Repair(repdurab, durabPerS));
         }
     }
+
+
+    #region Getters
+    public int MaxDurability
+    {
+        get
+        {
+            return _maxDurability;
+        }
+    }
+
+    public double CurrentDurability
+    {
+        get
+        {
+            return _durability;
+        }
+    }
+
+    public double CurrentResources
+    {
+        get
+        {
+            return _synthesis;
+        }
+    }
+    #endregion
+
 }

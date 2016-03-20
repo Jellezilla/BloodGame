@@ -85,7 +85,6 @@ public class ThreatSystem : MonoBehaviour
     }*/
     private IEnumerator ThreatDecay()
     {
-        Debug.Log("threat decay");  
         //while (CoolDown())
         while (_cThreat > 0.0f  && !_onCoolDown)
         {
@@ -104,7 +103,9 @@ public class ThreatSystem : MonoBehaviour
         _onCoolDown = false;
         StartCoroutine(ThreatDecay());
     }
-        
+        /// <summary>
+        /// Added for testing the threat level and spawn rate of white blood cells. To be removed as soon as it is satisfactory. 
+        /// </summary>
     void OnGUI()
     {
         string output = "Current Threat Level: " + GetThreatLevel().ToString();
