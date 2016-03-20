@@ -11,6 +11,7 @@ TagManager:
   - FlowArea
   - Wall
   - ChasisSlot
+  - GameManager
   layers:
   - Default
   - TransparentFX
