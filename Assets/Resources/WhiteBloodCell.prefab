@@ -13,7 +13,6 @@ GameObject:
   - 23: {fileID: 2350088}
   - 54: {fileID: 5462100}
   - 114: {fileID: 11433656}
-  - 114: {fileID: 11438522}
   - 114: {fileID: 11479084}
   m_Layer: 0
   m_Name: WhiteBloodCell
@@ -93,17 +92,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ee2b5bbb0cfb5a4c88f02f53fd1495b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11438522
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 160436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8036855e0264c2b409c266e20097ad7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11479084
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -115,8 +103,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab8bc52ffe6737f4f802bb226e765c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellHealth: 150
-  cellSynth: 75
+  _combatCD: 10
+  _cellHealth: 150
+  _cellSynth: 90
+  _initAtkThreat: 2
+  _deathThreat: 5
+  _cellDecayTime: 15
 --- !u!135 &13541156
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -159,6 +151,30 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: cellSynth
       value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _combatCD
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _cellHealth
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _cellSynth
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _initAtkThreat
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _deathThreat
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _cellDecayTime
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
