@@ -1,9 +1,9 @@
 ﻿/// <summary>Enumeration of all the player part types</summary>
-public enum MountType
+public enum FlowObjectType
 {
-    Fixed,
-    Gimbaled,
-    Turreted
+    Player,
+    WhiteCell,
+    RedCell
 }
 
 

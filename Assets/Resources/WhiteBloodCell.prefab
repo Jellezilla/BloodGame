@@ -14,6 +14,8 @@ GameObject:
   - 54: {fileID: 5462100}
   - 114: {fileID: 11433656}
   - 114: {fileID: 11479084}
+  - 195: {fileID: 19505856}
+  - 114: {fileID: 11414778}
   m_Layer: 0
   m_Name: WhiteBloodCell
   m_TagString: WhiteCell
@@ -28,7 +30,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 160436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.25, z: 0}
+  m_LocalPosition: {x: 0.91, y: 7.3, z: 15.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -81,6 +83,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!114 &11414778
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 939fd26ee5d17894d964b7f63409b07f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _aggroRange: 6
+  _wCellDmg: 15
+  _knockBack: 2
+  _hitTreshhold: 7
 --- !u!114 &11433656
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -121,6 +138,26 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!195 &19505856
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160436}
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Speed: 3
+  m_Acceleration: 1.5
+  avoidancePriority: 50
+  m_AngularSpeed: 180
+  m_StoppingDistance: 1.25
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 0.98
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

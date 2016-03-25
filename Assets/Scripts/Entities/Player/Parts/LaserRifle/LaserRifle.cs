@@ -17,7 +17,6 @@ public class LaserRifle : Parts {
     {
         ws = new WaitForSeconds(1/_rateOfFire);
         _spawnPoint = transform.GetChild(0).gameObject;
-        MountType();
 	}
 
     IEnumerator Shoot()
