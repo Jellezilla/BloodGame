@@ -38,7 +38,6 @@ public class Chasis : Parts {
 
     void Awake()
     {
-        MountType();
         _playerRB = transform.parent.GetComponent<Rigidbody>();
         _slots = new List<PartSlot>();
         _waitforS = new WaitForSeconds(1);

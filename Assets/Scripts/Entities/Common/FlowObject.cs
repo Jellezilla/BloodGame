@@ -1,11 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class FlowObject : MonoBehaviour
 {
     private FlowArea _currentFlowA;
     private Rigidbody _bodyRB;
-
     void Awake()
     {
         _bodyRB = GetComponent<Rigidbody>();
@@ -39,6 +37,13 @@ public class FlowObject : MonoBehaviour
         }
     }
 
+    public FlowArea CurrentFlowArea
+    {
+        get
+        {
+            return _currentFlowA;
+        }
+    }
 
     #endregion
 }
