@@ -9,7 +9,9 @@ public class CellSpawner : MonoBehaviour {
     private Transform _redCells;
     [SerializeField]
     private float _playerSpawnerDistance;
+    [SerializeField]
     private GameObject _whiteCellPrefab;
+    [SerializeField]
     private GameObject _redCellPrefab;
     private GameObject _player;
     private GameObject[] _spawnPoints;
@@ -26,8 +28,6 @@ public class CellSpawner : MonoBehaviour {
 	void Start () {
 
         _player = GameObject.FindGameObjectWithTag(Tags.playerTag);
-        _whiteCellPrefab = Resources.Load("WhiteBloodCell") as GameObject;
-        _redCellPrefab = Resources.Load("BloodCell") as GameObject;
         _spawnPoints = GameObject.FindGameObjectsWithTag(Tags.flowAreaTag);
         _ts = gameObject.GetComponent<ThreatSystem>();
         StartCoroutine(SpawnWhiteCells());

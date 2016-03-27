@@ -99,6 +99,8 @@ MonoBehaviour:
   _whiteCells: {fileID: 404184}
   _redCells: {fileID: 417590}
   _playerSpawnerDistance: 5
+  _whiteCellPrefab: {fileID: 160436, guid: 70ba6a48520d38d45bf528bcaf5daa3b, type: 2}
+  _redCellPrefab: {fileID: 185824, guid: ddbc4058af60a184aa5fd8704d278214, type: 2}
   _wCellSpawnTMult: 25
   _rCellSpawnDelay: 3
 --- !u!114 &11495454
