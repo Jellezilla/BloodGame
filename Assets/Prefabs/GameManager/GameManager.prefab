@@ -27,7 +27,7 @@ GameObject:
   - 114: {fileID: 11495454}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: GameController
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,7 +115,8 @@ MonoBehaviour:
   _maxThreat: 100
   _threatDecayRate: 1
   _threatDecayValue: 1
-  _cooldown: 5
+  _cooldown: 20
+  _cThreat: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

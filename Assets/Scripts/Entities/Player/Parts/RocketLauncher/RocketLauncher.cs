@@ -11,7 +11,6 @@ public class RocketLauncher : Parts {
     // Use this for initialization
     void Awake () {
 
-        MountType();
         _partName = "Rocket Launcher";
         _partDescription = "basic rocket launcher";
         _partCost = 0;

@@ -13,9 +13,11 @@ public class Player : MonoBehaviour {
     private List<LaserRifle> _laserRifles;
     [SerializeField]
     private Chasis _chasis;
+    private Rigidbody _playerRB;
 	// Use this for initialization
 	void Start () {
 
+        _playerRB = GetComponent<Rigidbody>();
         _launcher = new List<UtilityHookLauncher>(0);
         _mainThrusters = new List<MainThrusters>(0);
         _lateralThrusters = new List<LateralThrusters>(0);
@@ -193,6 +195,14 @@ public class Player : MonoBehaviour {
         get
         {
             return _chasis;
+        }
+    }
+
+    public Rigidbody PlayerRB
+    {
+        get
+        {
+            return _playerRB;
         }
     }
     #endregion
