@@ -12,7 +12,6 @@ GameObject:
   - 136: {fileID: 13661974}
   - 23: {fileID: 2380000}
   - 114: {fileID: 11492920}
-  - 114: {fileID: 11478460}
   m_Layer: 0
   m_Name: Chasis
   m_TagString: Untagged
@@ -203,17 +202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d9d68d2999a25f419f14cf3788d1b1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11478460
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 105946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ee2b5bbb0cfb5a4c88f02f53fd1495b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11489722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -239,7 +227,7 @@ MonoBehaviour:
   _maxDurability: 150
   _durability: 150
   _synthesis: 25
-  launcherPrefab: {fileID: 146572, guid: 6f484ac8261dda540bf5ef66471cbbb0, type: 2}
+  hooklauncherPrefab: {fileID: 146572, guid: 6f484ac8261dda540bf5ef66471cbbb0, type: 2}
   mainThrusterPrefab: {fileID: 122706, guid: b655adf8789bf0c4b95bf61b837f48c9, type: 2}
   lateralThrusterPrefab: {fileID: 168438, guid: b45dd56096fed95419c470ff2483c9f8,
     type: 2}

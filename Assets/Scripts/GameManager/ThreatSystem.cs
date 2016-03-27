@@ -11,18 +11,23 @@ public class ThreatSystem : MonoBehaviour
     [SerializeField]
     private float _threatDecayValue;
     [SerializeField]
-    private float _cooldown;
+    private int _cooldown;
+    private int _iCooldown;
+    [SerializeField]
     private float _cThreat;
-    private WaitForSeconds _threatDecay;
+    private WaitForSeconds _threatDecayStep;
+    private WaitForSeconds _coolDownStep;
     private bool _onCoolDown;
-    private bool _cdStarted;
     private float _cd;
     private Coroutine _threat;
-
+    private Coroutine _threatCoolDown;
 
     void Awake()
     {
-        _threatDecay = new WaitForSeconds(_threatDecayValue);
+        _iCooldown = _cooldown;
+        _coolDownStep = new WaitForSeconds(1);
+        _threatDecayStep = new WaitForSeconds(_threatDecayRate);
+        _threatCoolDown = StartCoroutine(CoolDown());
         _threat = StartCoroutine(ThreatDecay());
     }
 
@@ -39,9 +44,15 @@ public class ThreatSystem : MonoBehaviour
     {
         return (_cThreat - Mathf.Min(0, _maxThreat)) / (Mathf.Max(0, _maxThreat) - Mathf.Min(0, _maxThreat));
     }
+
+    /// <summary>
+    /// Increase threat by specified value, current threat decay cooldown will be reset.
+    /// </summary>
+    /// <param name="adj"></param>
     public void IncreaseThreat(int adj)
     {
-        _onCoolDown = false;
+        _onCoolDown = true;
+        _iCooldown = _cooldown;
         if (_cThreat < _maxThreat)
         {
             if (_cThreat + adj < _maxThreat)
@@ -51,36 +62,44 @@ public class ThreatSystem : MonoBehaviour
         }
 
     }
-    private bool CoolDown()
-    {
-        if (!_onCoolDown)
-        {
-            _onCoolDown = true;
-            _cd = _cooldown;
-        }
-        else
-        {
-            _cd -= Time.deltaTime;
-        }
-
-        if (_cd > 0.0f)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
     private IEnumerator ThreatDecay()
     {
-        while (CoolDown())
+        while (true)
         {
-            yield return _threatDecayRate;
-            if (_cThreat > 0)
+            if (!_onCoolDown)
             {
-                _cThreat -= _threatDecayValue;
+
+                if (_cThreat > 0)
+                {
+                    _cThreat -= _threatDecayValue;
+                }
             }
+
+            yield return _threatDecayStep;
+            Debug.Log(_cThreat);
+        }
+    
+
+    }
+    /// <summary>
+    /// Cooldown method
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator CoolDown()
+    {
+        while (true)
+        {
+            if (_iCooldown > 0 && _onCoolDown)
+            {
+                _iCooldown--;
+            }
+            else
+            {
+                _onCoolDown = false;
+                _iCooldown = _cooldown;
+            }
+
+            yield return _coolDownStep;
         }
     }
 

@@ -103,8 +103,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab8bc52ffe6737f4f802bb226e765c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellHealth: 25
-  cellSynth: 50
+  _combatCD: 10
+  _cellHealth: 100
+  _cellSynth: 75
+  _initAtkThreat: 2
+  _deathThreat: 5
+  _cellDecayTime: 15
 --- !u!136 &13608986
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -156,6 +160,30 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Mass
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _combatCD
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _cellHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _cellSynth
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _initAtkThreat
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _deathThreat
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _cellDecayTime
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

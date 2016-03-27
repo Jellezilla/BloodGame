@@ -29,7 +29,7 @@ public class GameController : Singleton<GameController> {
         }
     }
 
-    public int ChasisCurrentDurability
+    public double ChasisCurrentDurability
     {
         get
         {

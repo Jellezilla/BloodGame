@@ -3,10 +3,25 @@ using System.Collections.Generic;
 
 public class FlowArea : MonoBehaviour {
 
+    private Vector3 fVector;
+
+    void Awake()
+    {
+        fVector = transform.forward;
+    }
+
+
 	public void Attract(Rigidbody bodyRB)
     {
-		Vector3 fVectorUP = transform.forward;
-        bodyRB.AddForce(fVectorUP, ForceMode.Force);
+        bodyRB.AddForce(fVector, ForceMode.Force);
+    }
+
+    public Vector3 AreaHeading
+    {
+        get
+        {
+            return fVector;
+        }
     }
 
 }

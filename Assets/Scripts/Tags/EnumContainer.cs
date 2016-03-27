@@ -1,10 +1,9 @@
 ﻿/// <summary>Enumeration of all the player part types</summary>
-public enum PartType
+public enum FlowObjectType
 {
-    Chasis,
-    UtilityHookLauncher,
-    MineLayer,
-    RocketLauncher
+    Player,
+    WhiteCell,
+    RedCell
 }
 
 

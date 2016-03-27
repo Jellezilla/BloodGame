@@ -11,7 +11,7 @@ public class Chasis : Parts {
     [SerializeField]
     private int _maxDurability;
     [SerializeField]
-    private int _durability;
+    private double _durability;
     [SerializeField]
     private double _synthesis;
     private WaitForSeconds _waitforS;
@@ -20,7 +20,7 @@ public class Chasis : Parts {
     Coroutine syphon;
     private List<PartSlot> _slots;
     private Rigidbody _playerRB;
-    public GameObject launcherPrefab;
+    public GameObject hooklauncherPrefab;
     public GameObject mainThrusterPrefab;
     public GameObject lateralThrusterPrefab;
     public GameObject mineLauncherPrefab;
@@ -56,14 +56,29 @@ public class Chasis : Parts {
 
     public void TakeDamage(double damage)
     {
+        if(_durability>0)
+        {
+            _durability -= damage;
+        }
+
         // Implement Taking Damage
     }
+
+
+    public void PartTakeDamage(double damage)
+    {
+        if (_durability > 0)
+        {
+            _durability -= damage;
+        }
+    }
+
     //TEST FUNCTION
     void setupBOT()
     {
         // 0 is front , 1 is back // 2 slot left // 3 slot right
-        //_slots[0].addPart(launcherPrefab);
-        _slots[0].addPart(laserRiflePrefab);
+        _slots[0].addPart(hooklauncherPrefab);
+        //_slots[0].addPart(laserRiflePrefab);
         //_slots[1].addPart(launcherPrefab);
         //_slots[2].addPart(launcherPrefab);
         //_slots[3].addPart(launcherPrefab);
@@ -73,6 +88,12 @@ public class Chasis : Parts {
         
     }
     //END OF TEST FUNCTION
+
+    /// <summary>
+    /// Returns a list of all parts of a given type
+    /// </summary>
+    /// <param name="partType">given class type, has to be a Parts subclass</param>
+    /// <returns></returns>
     public List<Parts> GetAttachedParts(Type partType)
     {
         List<Parts> foundParts = new List<Parts>(0);
@@ -203,7 +224,7 @@ public class Chasis : Parts {
         }
     }
 
-    public int CurrentDurability
+    public double CurrentDurability
     {
         get
         {

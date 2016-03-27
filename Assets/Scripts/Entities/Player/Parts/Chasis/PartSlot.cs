@@ -14,8 +14,6 @@ public class PartSlot : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        StorePart();
 	
 	}
 
@@ -30,6 +28,7 @@ public class PartSlot : MonoBehaviour {
         _part = part.GetComponent<Parts>();
         part = null;
     }
+
     /// <summary>
     /// Add parts to the player. Used for parts that require a rigidbody reference.
     /// </summary>
@@ -51,20 +50,10 @@ public class PartSlot : MonoBehaviour {
         part = null;
     }
 
-    private void StorePart()
-    {
-        if (transform.childCount > 0 && _part == null)
-        {
-            _part = transform.GetChild(0).GetComponent<Parts>();
-        }
-        else if(transform.childCount < 1 && _part!=null)
-        {
-            _part = null;
-        }
-     }
 
     public Parts GetPart()
     {
         return _part;
     }
+
 }
