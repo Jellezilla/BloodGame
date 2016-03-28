@@ -43,7 +43,7 @@ public class Chasis : Parts {
         _slots = new List<PartSlot>();
         _waitforS = new WaitForSeconds(1);
         GetSlots();
-        setupBOT();
+       // setupBOT();
     }
 
 
@@ -111,6 +111,10 @@ public class Chasis : Parts {
 
     }
 
+    public void RemovePart(int slotIndex) 
+    {
+        _slots[slotIndex].RemovePart();
+    }
     /// <summary>
     /// Returns a list of all parts of a given type
     /// </summary>

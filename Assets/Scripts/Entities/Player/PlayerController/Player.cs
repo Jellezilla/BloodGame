@@ -30,7 +30,7 @@ public class Player : MonoBehaviour {
         UpdateParts();
 
     }
-    void UpdateParts()
+    public void UpdateParts()
     {
         //Init PartLists
         _launcher.RemoveRange(0, _launcher.Count);

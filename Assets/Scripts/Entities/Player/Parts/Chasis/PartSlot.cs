@@ -29,6 +29,16 @@ public class PartSlot : MonoBehaviour {
         part = null;
     }
 
+
+    public void RemovePart() 
+    {
+        if (_part != null) 
+        {
+            _part = null;
+            Destroy(transform.GetChild(0).gameObject);
+        }
+
+    }
     /// <summary>
     /// Add parts to the player. Used for parts that require a rigidbody reference.
     /// </summary>

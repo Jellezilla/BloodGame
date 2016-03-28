@@ -9,13 +9,16 @@ public class UIManagerScript : MonoBehaviour {
     public Sprite HpSpriteFrontface;
     public Sprite HpSpriteBackface;
     public Text HpbarIndicator;
+    public Text ThreatLevelField;
 
     private List<CanvasRenderer> _healthbars;
     private int _amountOfHealthbars = 15;
-
+    private bool _buildOpen = false;
+    public GameObject uiBuildScreen;
     // Use this for initialization
     void Start () {
 
+        uiBuildScreen.SetActive(_buildOpen);
         SetupUI();
         //ChangeHealth(GameController.Instance.ChasisCurrentDurability, GameController.Instance.ChasisMaxDurability);
 	}
@@ -23,6 +26,13 @@ public class UIManagerScript : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         ChangeHealth(GameController.Instance.ChasisCurrentDurability, GameController.Instance.ChasisMaxDurability);
+
+        if (Input.GetKeyDown("b")) {
+            Debug.Log("BBBBB");
+            ToggleBuildScreen();
+        }
+
+        ThreatLevelField.text = GameController.Instance.ThreatSystem.GetThreatLevel().ToString();
     }
 
     void SetupUI() {
@@ -69,12 +79,10 @@ public class UIManagerScript : MonoBehaviour {
             HpbarIndicator.text = Mathf.Round(hpCount).ToString();
         }
 
-
         for (int i = 0; i < _amountOfHealthbars; i++) {
            
             if (hpCount <= 0){
                _healthbars[i].SetAlpha(0f);
-               break;
             }
             else{
                 if (hpCount>singlebarHp){
@@ -87,5 +95,13 @@ public class UIManagerScript : MonoBehaviour {
                 hpCount -= singlebarHp;
             }
         }
+    }
+
+    void ToggleBuildScreen() {
+        if (_buildOpen) _buildOpen = false;
+        else _buildOpen = true;
+
+        uiBuildScreen.SetActive(_buildOpen);
+
     }
 }
