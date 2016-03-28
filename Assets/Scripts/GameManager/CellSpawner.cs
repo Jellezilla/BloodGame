@@ -69,8 +69,8 @@ public class CellSpawner : MonoBehaviour {
             yield return new WaitForSeconds(sp * _wCellSpawnTMult);
             GameObject cp = ClosestSpawnPoint();
             BoxCollider bc = cp.GetComponent<BoxCollider>();
-            offsetX = Random.Range(-bc.bounds.extents.x, bc.bounds.extents.x);
-            offsetZ = Random.Range(-bc.bounds.extents.z, bc.bounds.extents.z);
+            offsetX = Random.Range(0, bc.bounds.extents.x);
+            offsetZ = Random.Range(0, bc.bounds.extents.z);
             Vector3 spawnPos = new Vector3(cp.transform.position.x + offsetX, cp.transform.position.y, cp.transform.position.z + offsetZ);
             GameObject clone = Instantiate(_whiteCellPrefab, spawnPos, Quaternion.identity) as GameObject;
             clone.transform.parent = _whiteCells;
