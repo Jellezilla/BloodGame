@@ -46,7 +46,7 @@ public class GrappleHook : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision.gameObject.tag);
-        if (collision.gameObject.tag != Tags.playerTag)
+        if (collision.gameObject.tag != Tags.playerTag && collision.gameObject.tag != Tags.bossTag)
         {
             _hasTarget = true;
             Debug.Log("Hook HIT"); // if you hit a wall or something that you can attach to

@@ -25,6 +25,7 @@ GameObject:
   - 4: {fileID: 498546}
   - 114: {fileID: 11404066}
   - 114: {fileID: 11495454}
+  - 114: {fileID: 11490796}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -99,10 +100,23 @@ MonoBehaviour:
   _whiteCells: {fileID: 404184}
   _redCells: {fileID: 417590}
   _playerSpawnerDistance: 5
-  _whiteCellPrefab: {fileID: 160436, guid: 70ba6a48520d38d45bf528bcaf5daa3b, type: 2}
+  _whiteCellPrefab: {fileID: 175262, guid: e48c1bb9caf555d4391d4f90c31e438d, type: 2}
   _redCellPrefab: {fileID: 185824, guid: ddbc4058af60a184aa5fd8704d278214, type: 2}
   _wCellSpawnTMult: 25
   _rCellSpawnDelay: 3
+--- !u!114 &11490796
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7f870f922b098f4290bf9dd44600b52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeStepValue: 1
+  bossTimer: 30
 --- !u!114 &11495454
 MonoBehaviour:
   m_ObjectHideFlags: 1

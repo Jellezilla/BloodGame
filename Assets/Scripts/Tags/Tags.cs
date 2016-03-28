@@ -14,5 +14,6 @@ public static class Tags {
     public const string wallTag = "Wall";
     public const string resourceNode = "ResourceNode";
     public const string gameManager = "GameManager";
+    public const string bossTag = "Boss";
 }
 
