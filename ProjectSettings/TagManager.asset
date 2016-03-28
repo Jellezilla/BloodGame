@@ -12,6 +12,7 @@ TagManager:
   - Wall
   - ChasisSlot
   - GameManager
+  - Boss
   layers:
   - Default
   - TransparentFX

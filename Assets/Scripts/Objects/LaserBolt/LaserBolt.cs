@@ -31,7 +31,7 @@ public class LaserBolt : MonoBehaviour
     {
         if (other.gameObject.tag != Tags.playerTag && other.gameObject.tag != Tags.flowAreaTag)
         {
-            if (other.gameObject.tag == Tags.whiteCellTag || other.gameObject.tag == Tags.redCellTag || other.gameObject.tag == Tags.virusCellTag)
+            if (other.gameObject.tag == Tags.whiteCellTag || other.gameObject.tag == Tags.redCellTag || other.gameObject.tag == Tags.virusCellTag || other.gameObject.tag == Tags.bossTag)
             {
                 CellBody cb = other.gameObject.GetComponent<CellBody>();
                 cb.TakeDamage(_damage);
