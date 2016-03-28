@@ -1,14 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(FlowObject), typeof(NavMeshAgent), typeof(Rigidbody))]
+[RequireComponent(typeof(CellBody), typeof(NavMeshAgent), typeof(Rigidbody))]
 public class WhiteCellBehaviour : MonoBehaviour
 {
 
-
     private NavMeshAgent _cellAgent;
     private Rigidbody _cellRB;
-    private FlowObject _flowObject;
     private bool _agentDriven;
     [SerializeField]
     private float _aggroRange;
@@ -20,12 +18,14 @@ public class WhiteCellBehaviour : MonoBehaviour
     private bool _hit;
     [SerializeField]
     private float _hitTreshhold;
+    private CellBody _cellBody;
+
     // Use this for initialization
     void Awake()
     {
         _cellAgent = GetComponent<NavMeshAgent>();
         _cellRB = GetComponent<Rigidbody>();
-        _flowObject = GetComponent<FlowObject>();
+        _cellBody = GetComponent<CellBody>();
         _cellAgent.enabled = false;
         _reachedDest = true;
     }
@@ -33,26 +33,38 @@ public class WhiteCellBehaviour : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        Aggro();
         BehaviourMode();
-        Chase();
+        Behaviour();
+
     }
 
     private void BehaviourMode()
     {
         if (!_agentDriven && _cellAgent.enabled)
         {
-            _cellAgent.enabled = false;
             _cellRB.isKinematic = false;
+            _cellRB.velocity = _cellAgent.velocity;
+            _cellAgent.enabled = false;
         }
         else if (_agentDriven && !_cellAgent.enabled)
         {
             _cellAgent.enabled = true;
+            _cellAgent.velocity = _cellRB.velocity;
             _cellRB.isKinematic = true;
         }
     }
-
-
+    private void Behaviour()
+    {
+        if (_cellBody.isDead() == false)
+        {
+            Aggro();
+            Chase();
+        }
+        else
+        {
+            _agentDriven = false;
+        }
+    }
     private void Aggro()
     {
         if (Vector3.Distance(transform.position, GameController.Instance.Player.transform.position) <= _aggroRange)
@@ -64,7 +76,6 @@ public class WhiteCellBehaviour : MonoBehaviour
             _agentDriven = false;
         }
     }
-
     private void Chase()
     {
         if (_agentDriven && _cellAgent.enabled)
@@ -84,7 +95,6 @@ public class WhiteCellBehaviour : MonoBehaviour
                 _reachedDest = true;
             }
 
-            Debug.Log(_cellAgent.velocity);
 
         }
 

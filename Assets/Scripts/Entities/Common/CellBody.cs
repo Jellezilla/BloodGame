@@ -6,8 +6,10 @@ public class CellBody : MonoBehaviour {
     [SerializeField]
     private int _combatCD;
     [SerializeField]
+    private double _maxCellHealth;
     private double _cellHealth;
     [SerializeField]
+    private double _maxCellSynth;
     private double _cellSynth;
     private bool died;
     [SerializeField]
@@ -20,9 +22,16 @@ public class CellBody : MonoBehaviour {
     [SerializeField]
     private int _cellDecayTime;
     private Coroutine _combatState;
-
+    [SerializeField]
+    private CellBodyType _cellType;
+    private Material _cellMat;
+    private Color _originalColor;
     void Start()
     {
+        _cellMat = GetComponent<Renderer>().material;
+        _originalColor = _cellMat.color;
+        _cellHealth = _maxCellHealth;
+        _cellSynth = _maxCellSynth;
         _cmbtCD = _combatCD;
         _combatStep = new WaitForSeconds(1);
         _combatState = StartCoroutine(CombatState());
@@ -30,11 +39,22 @@ public class CellBody : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-
+        DisplayCurrentHealth();
         Death();
 	
 	}
 
+    private void DisplayCurrentHealth()
+    {
+        float hpp = (float)(_cellHealth / _maxCellHealth);
+        float synthp = (float)(_cellSynth / _maxCellSynth);
+        float red = Mathf.Clamp(_originalColor.r * hpp, 0.35f, 1);
+        float green = Mathf.Clamp(_originalColor.g * hpp, 0.35f, 1);
+        float blue = Mathf.Clamp(_originalColor.b * hpp, 0.35f, 1);
+        float alpha = Mathf.Clamp(_originalColor.a * synthp, 0.25f, 1);
+        _cellMat.color = new Color(red,green,blue,alpha);
+
+    }
     /// <summary>
     /// Death state Function
     /// </summary>

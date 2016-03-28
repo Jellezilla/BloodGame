@@ -3,7 +3,6 @@ using System.Collections;
 
 public class ThreatSystem : MonoBehaviour
 {
-
     [SerializeField]
     private float _maxThreat;
     [SerializeField]
@@ -78,7 +77,7 @@ public class ThreatSystem : MonoBehaviour
             yield return _threatDecayStep;
             Debug.Log(_cThreat);
         }
-    
+
 
     }
     /// <summary>
@@ -101,6 +100,12 @@ public class ThreatSystem : MonoBehaviour
 
             yield return _coolDownStep;
         }
+    }
+
+    public void OnDestroy()
+    {
+        StopCoroutine(_threat);
+        StopCoroutine(_threatCoolDown);
     }
 
 }

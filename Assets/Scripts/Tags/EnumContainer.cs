@@ -1,9 +1,10 @@
 ﻿/// <summary>Enumeration of all the player part types</summary>
-public enum FlowObjectType
+public enum CellBodyType
 {
-    Player,
+    None,
+    RedCell,
     WhiteCell,
-    RedCell
+    VirusCell
 }
 
 

@@ -104,11 +104,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _combatCD: 10
-  _cellHealth: 100
-  _cellSynth: 75
+  _maxCellHealth: 75
+  _maxCellSynth: 75
   _initAtkThreat: 2
   _deathThreat: 5
   _cellDecayTime: 15
+  _cellType: 0
 --- !u!136 &13608986
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -184,6 +185,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: _cellDecayTime
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _maxCellHealth
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _maxCellSynth
+      value: 75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
