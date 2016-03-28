@@ -9,6 +9,9 @@ public class WorldEventManager : MonoBehaviour {
     [SerializeField]
     private int bossTimer;
     private WaitForSeconds _timeStep;
+
+    public GameObject bossPrefab;
+
 	// Use this for initialization
 	void Awake () {
 
@@ -48,7 +51,13 @@ public class WorldEventManager : MonoBehaviour {
 
     private void SpawnBoss()
     {
-       
+        Vector3 pos;
+        GameObject[] tmpSpawnPoints = GetComponent<CellSpawner>().SpawnPoints;
+        pos = tmpSpawnPoints[Random.Range(0, tmpSpawnPoints.Length)].transform.position;
+
+        Instantiate(bossPrefab, pos, Quaternion.identity);
+        
+           
     }
 
 
