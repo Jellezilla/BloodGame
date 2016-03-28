@@ -116,7 +116,7 @@ MonoBehaviour:
   _maxCellHealth: 350
   _maxCellSynth: 300
   _initAtkThreat: 4
-  _deathThreat: 50
+  _deathThreat: 30
   _cellDecayTime: 15
   _cellType: 0
 --- !u!114 &11495266

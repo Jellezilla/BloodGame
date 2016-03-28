@@ -105,5 +105,11 @@ public class CellSpawner : MonoBehaviour {
         }
     }
 
-
+    public GameObject[] SpawnPoints
+    {
+        get
+        {
+            return _spawnPoints;
+        }
+    }
 }
