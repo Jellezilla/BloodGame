@@ -232,7 +232,7 @@ MonoBehaviour:
   lateralThrusterPrefab: {fileID: 168438, guid: b45dd56096fed95419c470ff2483c9f8,
     type: 2}
   mineLauncherPrefab: {fileID: 109476, guid: 7e066e04d35ab464183f58ab74ad88a2, type: 2}
-  rocketLauncherPrefab: {fileID: 107334, guid: 4552a7780a550254ab85bb5e90b40d40, type: 2}
+  rocketLauncherPrefab: {fileID: 131646, guid: 4552a7780a550254ab85bb5e90b40d40, type: 2}
   laserRiflePrefab: {fileID: 148224, guid: 8778d3ba597e0d241898efba9ba91f6d, type: 2}
 --- !u!114 &11496600
 MonoBehaviour:
