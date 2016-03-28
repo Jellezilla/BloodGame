@@ -1,32 +1,15 @@
 fileFormatVersion: 2
-guid: a3f874988606c3741a3e6e5a3d180c5b
-timeCreated: 1459095144
+guid: deef99ca335f73845957905fabdfe03d
+timeCreated: 1459181981
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: pCylinder1
-    100002: pSphere1
-    100004: pSphere2
-    100006: pSphere4
-    100008: //RootNode
-    400000: pCylinder1
-    400002: pSphere1
-    400004: pSphere2
-    400006: pSphere4
-    400008: //RootNode
-    2300000: pCylinder1
-    2300002: pSphere1
-    2300004: pSphere2
-    2300006: pSphere4
-    3300000: pCylinder1
-    3300002: pSphere1
-    3300004: pSphere2
-    3300006: pSphere4
-    4300000: pCylinder1
-    4300002: pSphere1
-    4300004: pSphere2
-    4300006: pSphere4
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: pTorus2
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -42,7 +25,7 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -86,7 +69,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

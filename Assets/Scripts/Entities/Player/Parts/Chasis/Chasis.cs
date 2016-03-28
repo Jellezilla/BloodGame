@@ -26,6 +26,7 @@ public class Chasis : Parts {
     public GameObject mineLauncherPrefab;
     public GameObject rocketLauncherPrefab;
     public GameObject laserRiflePrefab;
+    private bool _dead;
     //current Chasis properties -- test stuff
     //repair values
     int repdurab = 50;
@@ -64,14 +65,16 @@ public class Chasis : Parts {
         // Implement Taking Damage
     }
 
-
-    public void PartTakeDamage(double damage)
+    private void Death()
     {
-        if (_durability > 0)
+        if (_durability <= 0)
         {
-            _durability -= damage;
+            _durability = 0;
+            _dead = true;
+
         }
     }
+
 
     //TEST FUNCTION
     void setupBOT()
@@ -82,12 +85,31 @@ public class Chasis : Parts {
         //_slots[1].addPart(launcherPrefab);
         //_slots[2].addPart(launcherPrefab);
         //_slots[3].addPart(launcherPrefab);
-        _slots[1].addPart(mainThrusterPrefab,_playerRB);
-        _slots[2].addPart(lateralThrusterPrefab, _playerRB);
+        _slots[2].addPart(mainThrusterPrefab,_playerRB);
+        _slots[1].addPart(lateralThrusterPrefab, _playerRB);
         _slots[3].addPart(lateralThrusterPrefab, _playerRB);
         
     }
     //END OF TEST FUNCTION
+
+    /// <summary>
+    /// Attach part to chasis, specify if the part uses a rigidbody.
+    /// </summary>
+    /// <param name="partPrefab">part prefab.</param>
+    /// <param name="slotIndex">index of the slot.</param>
+    /// <param name="hasRigidBody"></param>
+    public void AttachPart(GameObject partPrefab, int slotIndex, bool hasRigidBody)
+    {
+        if (hasRigidBody)
+        {
+            _slots[slotIndex].addPart(partPrefab, _playerRB);
+        }
+        else
+        {
+            _slots[slotIndex].addPart(partPrefab);
+        }
+
+    }
 
     /// <summary>
     /// Returns a list of all parts of a given type
@@ -124,7 +146,7 @@ public class Chasis : Parts {
 
     void Update()
     {
-        Debug.Log(_synthesis);
+        Death();
     }
 
     public void SyphonTarget(CellBody target)
@@ -155,6 +177,7 @@ public class Chasis : Parts {
             {
                 _durability += perSecond;
                 passedDurab -= perSecond;
+
             }
             else if (passedDurab < perSecond)
             {
@@ -162,6 +185,10 @@ public class Chasis : Parts {
                 _durability += perSecond + (passedDurab - perSecond);
             }
 
+            if (_durability > _maxDurability)
+            {
+                _durability = _maxDurability;
+            }
         }
 
         _selfRepairOn = false;
@@ -216,6 +243,15 @@ public class Chasis : Parts {
 
 
     #region Getters
+    public List<PartSlot> Slots
+    {
+        get
+        {
+            return _slots;
+        }
+
+    }
+
     public int MaxDurability
     {
         get
@@ -237,6 +273,14 @@ public class Chasis : Parts {
         get
         {
             return _synthesis;
+        }
+    }
+
+    public bool Dead
+    {
+        get
+        {
+            return _dead;
         }
     }
     #endregion

@@ -14,6 +14,9 @@ public class Player : MonoBehaviour {
     [SerializeField]
     private Chasis _chasis;
     private Rigidbody _playerRB;
+
+
+
 	// Use this for initialization
 	void Start () {
 
@@ -21,16 +24,21 @@ public class Player : MonoBehaviour {
         _launcher = new List<UtilityHookLauncher>(0);
         _mainThrusters = new List<MainThrusters>(0);
         _lateralThrusters = new List<LateralThrusters>(0);
-        _minelayers = new List<Minelayer>();
-        _rocketLaunchers = new List<RocketLauncher>();
-        _laserRifles = new List<LaserRifle>();
+        _minelayers = new List<Minelayer>(0);
+        _rocketLaunchers = new List<RocketLauncher>(0);
+        _laserRifles = new List<LaserRifle>(0);
         UpdateParts();
-
-
 
     }
     void UpdateParts()
     {
+        //Init PartLists
+        _launcher.RemoveRange(0, _launcher.Count);
+        _mainThrusters.RemoveRange(0, _mainThrusters.Count);
+        _lateralThrusters.RemoveRange(0, _lateralThrusters.Count);
+        _minelayers.RemoveRange(0, _minelayers.Count);
+        _rocketLaunchers.RemoveRange(0, _rocketLaunchers.Count);
+        _laserRifles.RemoveRange(0, _laserRifles.Count);
         //Load Part 
         List<Parts> parts = _chasis.GetAttachedParts(typeof(UtilityHookLauncher));
         if (parts!=null)
@@ -88,9 +96,11 @@ public class Player : MonoBehaviour {
 
     }
 
+
     /// <summary>Used to make the player move.</summary>
     void Movement()
     {
+        if(_mainThrusters.Count>0)
         for (int i = 0; i < _mainThrusters.Count; i++)
         {
             _mainThrusters[i].PartAction();
@@ -103,7 +113,8 @@ public class Player : MonoBehaviour {
 
     }
 
-    void FireWeapons()
+    //Input Hook For running parts
+    void Parts()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -138,23 +149,16 @@ public class Player : MonoBehaviour {
                     _laserRifles[i].PartAction();
                 }
             }
-
-
         }
 
+        if (Input.GetKeyDown(KeyCode.R) && _chasis != null)
+        {
+            _chasis.PartAction();
+        }
     }
 
     // Update is called once per frame
     void Update () {
-
-        FireWeapons();
-
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Debug.Log("Repair");
-            _chasis.PartAction();
-        }
 
 
         if (Input.GetKeyDown(KeyCode.E))
@@ -167,7 +171,6 @@ public class Player : MonoBehaviour {
                     {
                         Debug.Log(_launcher[i].CurrentHook.HookTarget);
                         _chasis.SyphonTarget(_launcher[i].CurrentHook.HookTarget);
-                        Debug.Log("Syphon");
                     }
                 }
             }
@@ -180,14 +183,35 @@ public class Player : MonoBehaviour {
 
     void FixedUpdate()
     {
-        Movement();
+        if (!_chasis.Dead)
+        {
+            Movement();
+            Parts();
+        }
+
     }
 
 
-    //placeholder 
-    void RegisterChasis()
+    /// <summary>
+    /// Add Chasis to player
+    /// </summary>
+    /// <param name="chasisPrefab">Chasis GameObject Prefab</param>
+    void RegisterChasis(GameObject chasisPrefab)
     {
-        _chasis = transform.GetChild(0).GetComponent<Chasis>();
+        GameObject chasis = (GameObject)Instantiate(chasisPrefab, transform.position, transform.rotation);
+        chasis.transform.SetParent(transform);
+        _chasis = chasis.GetComponent<Chasis>();
+    }
+
+    /// <summary>
+    /// Remove chasis and all parts from player
+    /// </summary>
+    void UnRegisterChasis()
+    {
+        if (transform.childCount > 0)
+        {
+            Destroy(transform.GetChild(transform.childCount - 1));
+        }
     }
     #region Setter/Getter
     public Chasis Chasis
