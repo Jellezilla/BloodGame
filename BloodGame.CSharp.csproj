@@ -58,12 +58,6 @@
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
@@ -96,6 +90,9 @@
     <Compile Include="Assets\Scripts\Tags\EnumContainer.cs" />
     <Compile Include="Assets\Scripts\Tags\Tags.cs" />
     <Compile Include="Assets\Scripts\World\FlowArea.cs" />
+    <Compile Include="Assets\UI\Scripts\UIBuildScreenListPart.cs" />
+    <Compile Include="Assets\UI\Scripts\UIDragHandler.cs" />
+    <Compile Include="Assets\UI\Scripts\UIDragSlot.cs" />
     <Compile Include="Assets\UI\Scripts\UIManagerScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
