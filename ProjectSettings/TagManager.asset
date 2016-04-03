@@ -4,15 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Section
-  - RedCell
-  - WhiteCell
-  - VirusCell
-  - FlowArea
-  - Wall
-  - ChasisSlot
   - GameManager
-  - Boss
   layers:
   - Default
   - TransparentFX
